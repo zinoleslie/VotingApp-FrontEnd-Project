@@ -1,68 +1,289 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+body.dark {
+    background-color: rgb(4, 20, 34);
+    /* color: white; */
+    transition: 0.5s;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+body.dark .box__card {
+    background-color: rgb(4, 20, 34);
+    transition: 0.3s;
 }
-a:hover {
-  color: #535bf2;
+
+body.dark .result__header {
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+}
+
+body.dark .btn__election {
+    background-color: rgb(5, 10, 14);
+    color: white;
+    transition: 0.3s;
+
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    background-color: rgb(248, 243, 243);
+    transition: 0.3s;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.results {
+    margin: 5rem 0;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.results__container {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.result {
+    /* background-color:white; */
+    border-radius: var(--radius-4);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid black; */
+    margin-bottom: 3rem;
+
+}
+
+.result__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    ;
+    /* border:2px solid black; */
+    border-radius: 1rem 1rem;
+    margin-bottom: 2rem;
+}
+
+.result__header-image {
+    width: 30px;
+    /* height: 50px; */
+    /* aspect-ratio: 1/1; */
+    overflow: hidden;
+    /* border-radius: 50%; */
+    justify-content: end;
+    /* border: 1px solid black; */
+    display: flex;
+
+    /* margin: 1.5rem; */
+    /* border: 2px solid black; */
+}
+
+.result__header h4 {
+    padding: 1.5rem;
+    /* border: 2px solid black; */
+    font-weight: 700;
+}
+
+.result__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    padding-top: 1rem;
+}
+
+.result__candidate {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 2px solid black; */
+    width: 680px;
+}
+
+.result__candidate-image {
+    height: 3.5rem;
+    width: 3.5rem;
+    aspect-ratio: 1/1;
+    border-radius: 1rem;
+    overflow: hidden;
+    /* margin-right: 60px; */
+    margin: 0 20px;
+}
+
+.box__card {
+    display: flex;
+    /* border: 2px solid black ; */
+    justify-content: space-between;
+    width: 97%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-top: 5px;
+    background-color: rgb(238, 236, 236);
+
+}
+
+.image__info {
+    /* border: 1px solid black; */
+    /* display: flex; */
+    justify-content: space-between;
+    width: 150%;
+}
+
+
+.result__candidate-rating {
+    display: flex;
+    /* border: 2px solid black; */
+    margin-left: 90px;
+    gap: 1rem;
+    align-items: center;
+    width: 85%;
+}
+
+
+.result__candidate-loader {
+    display: block;
+    width: 100%;
+    height: 0.4rem;
+    background-color: rgb(238, 231, 231);
+    border-radius: 0.5rem;
+}
+
+.result__candidate-loader span {
+    height: 100%;
+    display: block;
+    background: linear-gradient(to right, rgb(25, 25, 245), rgb(103, 217, 255));
+    border-radius: 0.5rem;
+}
+
+.btn__election {
+    /* border: 2px solid black; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    /* margin-bottom: 5px; */
+    background-color: rgb(238, 236, 236);
+    padding: 15px 0px;
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+@media (max-width: 768px) {
+    .results__container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .result {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .result__candidate {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .result__candidate-image {
+        margin: 0;
+    }
+
+    .result__candidate-info {
+        text-align: left;
+        margin-left: 0;
+    }
+
+    .result__candidate-rating {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+/* For Medium Screens (768px and below) */
+@media (max-width: 768px) {
+    .results__container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .result {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .result__candidate {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .image__info{
+        width: 600px;
+    }
+
+    .result__candidate-image {
+        margin: 0;
+    }
+
+    .result__candidate-info {
+        text-align: left;
+        margin-left: 0;
+    }
+
+    .result__candidate-rating {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+
+
+
+
+/* For Small Screens (480px and below) */
+@media(max-width: 480px) {
+
+    .result {
+        width: 90% !important;
+    }
+
+    .result__header {
+        margin-top: 5px;
+    }
+
+    .image__info {
+        margin-left: 0px;
+        width: 300px;
+    }
+
+    .result__header h4 {
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+
+
+
+    .result__candidate-image {
+        height: 3rem;
+        width: 3rem;
+        margin: 0px 8px;
+    }
+
+    .result__candidate-loader {
+        height: 0.3rem;
+    }
+
+    .btn__election {
+        font-size: 14px;
+        padding: 10px 0;
+    }
 }
