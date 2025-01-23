@@ -12,7 +12,7 @@ function Register() {
       borderRadius: "10px",
       margin: "50px auto",
       padding: "20px 30px",
-      backgroundColor: 'rgb(241,241,241)'
+      backgroundColor: 'rgb(221, 221, 221)'
     },
     errorMessage: {
       border: 'none',
@@ -35,7 +35,7 @@ function Register() {
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-12 col-md-8 col-lg-6">
-          <Form style={styles.formBox}>
+          <Form style={styles.formBox} className='login__Box'>
             <h3 className="fw-bold mb-4 text-center mb-4">Sign Up</h3>
             <p style={styles.errorMessage}>Any error from the backend</p>
             <Form.Group className="mb-3" controlId="formBasicFullname">

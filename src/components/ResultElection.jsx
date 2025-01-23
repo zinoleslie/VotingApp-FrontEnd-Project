@@ -31,7 +31,7 @@ const ResultElection = ({ title, id, thumbnail }) => {
                         /> )
                     }
                 </ul>
-                <Link to={`/elections${id}/candidate`} className='btn__election'>Enter Election</Link>
+                <Link to={`/elections/${id}/candidates`} className='btn__election'>Enter Election</Link>
             </header>
             
         </article>

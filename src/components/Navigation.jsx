@@ -46,6 +46,8 @@ function Navigation() {
       color:'#fff',
     }
   }
+
+  
   return (
     <Navbar collapseOnSelect expand="lg" style={styles.navbar}>
       <Container>
@@ -59,15 +61,15 @@ function Navigation() {
           <button style={styles.toggleBtn} onClick={handleToggle}>
             {Darktheme ? <FaSun /> : <FaMoon />}
           </button>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ms-2" />
+          <Navbar.Toggle aria-controls="responsive-navbar-nav " className="ms-2 bg-light" />
         </div>
   
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Collapse id="responsive-navbar-nav ">
           {/* Centered navigation links */}
           <Nav className="mx-auto" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <Nav.Link href="#features" className="fw-bold text-white mx-3">Features</Nav.Link>
+            <Nav.Link href="#features" className="fw-bold text-white mx-3">Elections</Nav.Link>
             <Nav.Link href="results" className="fw-bold text-white mx-3">Results</Nav.Link>
-            <Nav.Link href="/election" className="fw-bold text-white mx-3">Elections</Nav.Link>
+            <Nav.Link href="/election" className="fw-bold text-white mx-3">Logout</Nav.Link>
           </Nav>
   
           {/* Moon/Sun toggle icon for large screens */}

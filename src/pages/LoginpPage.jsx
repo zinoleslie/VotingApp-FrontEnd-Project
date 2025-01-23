@@ -9,11 +9,13 @@ function LoginPage() {
   const styles = {
     formBox: {
       border: "none",
-      borderRadius: "10px",
+      borderRadius: "10px", 
       margin: "50px auto",
       padding: "20px 30px",
-      backgroundColor: 'rgb(241,241,241)',
+      backgroundColor: 'rgb(221, 221, 221)',
     },
+
+    
     errorMessage: {
       border: 'none',
       padding: '0.6rem 1.5rem',

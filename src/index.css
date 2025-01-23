@@ -7,21 +7,44 @@ body.dark {
 
 body.dark .box__card {
     background-color: rgb(4, 20, 34);
-    transition: 0.3s;
+    transition: 0.1s;
 }
 
 body.dark .result__header {
     background-color: black;
     color: white;
-    transition: 0.3s;
+    transition: 0.1s;
 }
 
 body.dark .btn__election {
     background-color: rgb(5, 10, 14);
     color: white;
-    transition: 0.3s;
+    transition: 0.1s;
 
 }
+
+body.dark .candidate__header {
+    color: white;
+}
+
+body.dark .candidate {
+    background-color: rgb(232, 232, 248);
+}
+
+body.dark .login__Box {
+    background-color: rgb(10, 10, 82) !important;
+    color: white;
+    transition: 0.5s;
+
+}
+
+body.dark .btn__election:hover {
+    background-color: rgb(146, 146, 255);
+    color: black;
+    transition: 0.3s;
+}
+
+
 
 body {
     background-color: rgb(248, 243, 243);
@@ -168,6 +191,276 @@ body {
     font-weight: 700;
 }
 
+.btn__election:hover {
+    background-color: rgb(4, 20, 34);
+    color: white;
+    transition: 0.3s;
+}
+
+.candidate__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-inline: auto;
+    width: 60%;
+    /* margin-top: 30px; */
+}
+
+.candidates {
+    width: 100%;
+    margin: 1rem 0;
+    /* border: 2px solid black; */
+    padding: 0px 40px;
+}
+
+.candidate__header h1 {
+    font-weight: 700;
+    margin-bottom: -3px;
+}
+
+.candidate__header p {
+    margin-bottom: 2rem;
+
+}
+
+
+.candidate__container {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 35px;
+    /* border: 2px solid black */
+}
+
+.candidate {
+    background-color: white;
+    text-align: center;
+    border-radius: 15px;
+    padding-bottom: 1.2rem;
+    padding: 8px 7px;
+    /* border: 2px solid black; */
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.candidate h4 {
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.candidate__image {
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    margin-inline: auto;
+    margin-bottom: 20px;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+
+.candidate small {
+    display: block;
+    margin: 0.5rem 0.5rem;
+}
+
+.modal {
+    backdrop-filter: blur(5px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: grid !important;
+    place-items: center;
+}
+
+.modal__content {
+    background-color:white !important;
+    width: 35rem !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    /* border: 2px solid black !important; */
+}
+ .modal__header{
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+ }
+
+
+.modal h4{
+    color: white;
+}
+
+.modal__header button{
+    background: transparent;
+    font-size: 1.8rem;
+    color: white;
+}
+
+
+.modal__content form {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    padding-bottom: 3rem;
+}
+.modal__content form input{
+     margin-top: 2rem;
+     width: 100%;
+     padding: 0.8rem 1rem;
+    background-color: aliceblue;
+    border-radius: 20px;
+    color: black;
+}
+
+
+
+.confirm__vote-content {
+    text-align: center;
+    border-radius: 20px;
+
+}
+
+.confirm__vote-content h5{
+    margin: 2rem 0;
+    color: blue;
+}
+
+
+.confirm__vote-image{
+    width: 15rem;
+    aspect-ratio: 1/1;
+    margin-inline: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.confirm__vote-content p {
+    margin: 0.4rem 0 2.5rem;
+    padding: 0 2rem;
+}
+ .confirm__vote-cta {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-inline: auto;
+    margin-bottom: 2rem;
+ }
+
+.dark .confirm__vote-cta .btn {
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+
+    /* Tablets (md screens) */
+
+    .candidate__header {
+        width: 80%;
+        /* Reduce width */
+    }
+
+    .candidate__header h1 {
+        font-size: 1.8rem;
+        /* Slightly smaller font */
+    }
+
+    .candidate__header p {
+        font-size: 0.9rem;
+        /* Reduce paragraph font size */
+    }
+
+    .candidate__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* Adjust grid layout */
+    }
+
+    .candidate {
+        padding: 6px 5px;
+        /* Adjust padding */
+    }
+
+    .candidate__image img {
+        height: 300px;
+        /* Reduce image height */
+    }
+
+    .modal__content{
+        width: 30rem !important;
+    }
+
+
+}
+
+@media (max-width: 480px) {
+
+    /* Phones (sm screens) */
+    .candidate__header {
+        width: 90%;
+        /* Narrower width */
+    }
+
+    .candidate__header h1 {
+        font-size: 1.5rem;
+        /* Smaller font for titles */
+    }
+
+    .candidate__header p {
+        font-size: 0.8rem;
+        /* Smaller paragraph font size */
+    }
+
+    .candidate__container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .candidate {
+        padding: 5px 4px;
+        /* Further reduce padding */
+    }
+
+    .modal__content{
+        width: 20rem !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 768px) {
     .results__container {
@@ -226,7 +519,7 @@ body {
         width: 100%;
     }
 
-    .image__info{
+    .image__info {
         width: 600px;
     }
 
