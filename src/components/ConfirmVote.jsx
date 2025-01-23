@@ -49,7 +49,7 @@ const ConfirmVote = () => {
                 <p>{modalCandidate.motto?.length >25 ? modalCandidate.motto?.substring(0, 25) + '...': modalCandidate?.motto}</p>
 
                 <div className="confirm__vote-cta">
-                    <button className="btn btn-light" onClick={closeCandidateModal}>Cancel</button>
+                    <button className="btn modal__cancel" onClick={closeCandidateModal}>Cancel</button>
                     <button className="btn btn-primary">Confirm</button>
                 </div>
             </div>

@@ -348,6 +348,8 @@ body {
     margin: 0.4rem 0 2.5rem;
     padding: 0 2rem;
 }
+
+
  .confirm__vote-cta {
     width: fit-content;
     display: flex;
@@ -357,7 +359,14 @@ body {
     margin-bottom: 2rem;
  }
 
-.dark .confirm__vote-cta .btn {
+
+.modal__cancel {
+    background-color: rgb(241, 23, 23);
+    color: white;
+}
+
+.modal__cancel:hover {
+    background-color: rgb(207, 3, 3);
     color: white;
 }
 
