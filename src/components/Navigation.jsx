@@ -67,8 +67,8 @@ function Navigation() {
         <Navbar.Collapse id="responsive-navbar-nav ">
           {/* Centered navigation links */}
           <Nav className="mx-auto" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <Nav.Link href="#features" className="fw-bold text-white mx-3">Elections</Nav.Link>
-            <Nav.Link href="results" className="fw-bold text-white mx-3">Results</Nav.Link>
+            <Nav.Link href="/elections" className="fw-bold text-white mx-3">Elections</Nav.Link>
+            <Nav.Link href="/results" className="fw-bold text-white mx-3">Results</Nav.Link>
             <Nav.Link href="/election" className="fw-bold text-white mx-3">Logout</Nav.Link>
           </Nav>
   
