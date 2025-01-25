@@ -28,7 +28,7 @@ body.dark .candidate__header {
 }
 
 body.dark .candidate {
-    background-color: rgb(232, 232, 248);
+    background-color: rgb(225, 225, 247);
 }
 
 body.dark .login__Box {
@@ -44,6 +44,20 @@ body.dark .btn__election:hover {
     transition: 0.3s;
 }
 
+body.dark .elections {
+    color: white;
+}
+
+body.dark .election {
+    background-color: rgb(12, 12, 12);
+    border: 0.5rem solid rgb(12, 12, 12);
+    color: white;
+    transition: 0.2s;
+}
+
+body.dark .election:hover {
+    box-shadow: 0 0.4rem 0.8rem rgb(94, 91, 91);
+}
 
 
 body {
@@ -255,8 +269,14 @@ body {
     margin-inline: auto;
     margin-bottom: 20px;
     width: 100%;
+    /* height: 100%; */
+    max-width: 20rem;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+}
+
+.candidate__image img {
+    object-fit: cover;
 }
 
 
@@ -272,55 +292,149 @@ body {
     left: 0;
     z-index: 2;
     height: 100vh;
+    overflow: hidden;
     background: rgba(0, 0, 0, 0.7);
     display: grid !important;
     place-items: center;
 }
 
 .modal__content {
-    background-color:white !important;
+    background-color: white !important;
     width: 35rem !important;
     border-radius: 20px !important;
     overflow: hidden !important;
     /* border: 2px solid black !important; */
 }
- .modal__header{
-    background-color: blue;
+
+.modal__header {
+    background-color: rgb(29, 29, 197);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2rem;
- }
+    padding: 1rem;
+    overflow: hidden;
+    width: 100%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    margin-top: -25px;
+    margin-left: -25px;
+    width: 562px;
+    margin-bottom: 1rem;
+}
 
+body.dark .modal__header{
+    background-color: rgb(4, 20, 34);
+}
 
-.modal h4{
+body.dark .modal__content  {
+    background: rgb(7, 4, 17) !important;
+    color: white !important;
+
+}
+
+body.dark  .modal__content form label {
+    color: white !important;
+}
+
+body.dark  .modal__close{
+    color: white !important;
+}
+
+body.dark  .modal__content form input {
+    background: transparent !important;
+    border:1px solid rgb(97, 78, 78) !important;
+    color: white !important;
+}
+
+body.dark  .modal__content form input::placeholder {
+    color: rgb(202, 202, 202) !important;
+}
+
+body.dark  .modal__content form button {
+    background-color: rgb(2, 72, 134) !important;
+    color: white !important;
+}
+
+.modal h4 {
     color: white;
 }
 
-.modal__header button{
+.modal__header button {
     background: transparent;
     font-size: 1.8rem;
     color: white;
 }
 
 
-.modal__content form {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 2rem;
-    padding-bottom: 3rem;
-}
-.modal__content form input{
-     margin-top: 2rem;
-     width: 100%;
-     padding: 0.8rem 1rem;
-    background-color: aliceblue;
-    border-radius: 20px;
-    color: black;
+.modal__content {
+    width: 350px;
+    /* Adjust width to make it smaller */
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+
+
+
+.modal__header h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.modal__close {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.modal__content form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.modal__content form label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.modal__content form input {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 8px;
+    /* border: 1px solid #ccc; */
+    /* background-color: #f8f8f8; */
+    font-size: 0.9rem;
+    transition: border 0.3s;
+}
+
+.modal__content form input:focus {
+    border: 1px solid #007bff;
+    outline: none;
+    background-color: #fff;
+}
+
+.modal__content form button {
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    width: 150px;
+    /* transition: background 0.3s; */
+}
+
+.modal__content form button:hover {
+    background-color: #0056b3;
+}
 
 
 .confirm__vote-content {
@@ -329,19 +443,32 @@ body {
 
 }
 
-.confirm__vote-content h5{
+.confirm__vote-content h5 {
     margin: 2rem 0;
     color: blue;
+    font-size: 19px;
+    font-weight: 700;
 }
 
 
-.confirm__vote-image{
-    width: 15rem;
+.confirm__vote-image {
+    width: 100% !important;
+    /* Make sure the container spans the full width */
+    max-width: 15rem;
     aspect-ratio: 1/1;
     margin-inline: auto;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm__vote-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .confirm__vote-content p {
@@ -350,14 +477,14 @@ body {
 }
 
 
- .confirm__vote-cta {
+.confirm__vote-cta {
     width: fit-content;
     display: flex;
     align-items: center;
     gap: 1.5rem;
     margin-inline: auto;
     margin-bottom: 2rem;
- }
+}
 
 
 .modal__cancel {
@@ -368,6 +495,101 @@ body {
 .modal__cancel:hover {
     background-color: rgb(207, 3, 3);
     color: white;
+}
+
+
+
+.congrats {
+    padding: 3rem;
+    text-align: center;
+    height: 100vh;
+    /* border: 2px solid black; */
+}
+
+.congrats p {
+    margin: 0.5rem 0 1.2rem;
+}
+
+
+.congrats h2 {
+    font-weight: 700;
+    font-size: 30px;
+}
+
+
+.elections {
+    margin: 1rem 0;
+    /* border: 2px solid black;     */
+}
+
+.elections__header h1 {
+    font-weight: 700;
+    font-size: 30px;
+    margin-inline: 40px;
+
+}
+
+.elections__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.elections__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.election {
+    display: grid;
+    grid-template-columns: 17rem auto;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 0.5rem solid white;
+    transition: var(transition);
+}
+
+
+.election__image {
+    max-height: 13rem;
+    width: 100%;
+    max-width: 15rem;
+    overflow: hidden;
+
+}
+
+.election__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.election:hover {
+    box-shadow: 0 0.8rem 0.8rem rgb(111, 111, 136);
+}
+
+.election__info {
+    padding: 1rem 2rem;
+}
+
+.election__info h4 {
+    margin-bottom: 0.7rem;
+    color: blue;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.election__cta {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 1rem;
 }
 
 
@@ -420,7 +642,7 @@ body {
         /* Reduce image height */
     }
 
-    .modal__content{
+    .modal__content {
         width: 30rem !important;
     }
 
@@ -455,8 +677,32 @@ body {
         /* Further reduce padding */
     }
 
-    .modal__content{
+    .modal__content {
         width: 20rem !important;
+    }
+
+
+    /*======================== ELECTION RESPONSIVE SCREEN====================*/
+
+    .election {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    .election__info {
+        padding: 2rem 1rem;
+    }
+
+    .election__image {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .elections__menu {
+        /* padding-left: 30px; */
+        padding: 1rem 0.5rem !important;
+        /* border: 2px solid ;  */
     }
 }
 

@@ -10,6 +10,7 @@ import Candidate from './pages/Candidate';
 import ElectionPage from './pages/ElectionPage';
 import { ElectionDetails } from './pages/ElectionDetails';
 import ConfirmVote from './components/ConfirmVote'; // Modal component
+import Congrats from './pages/Congrats';
 
 const App = () => {
   // Access the modal state from Redux
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<Errorpage />} />
         <Route path="/results" element={<Results />} />
+        <Route path="/congrats" element={<Congrats/>} />
         <Route path="/elections" element={<ElectionPage />} />
         <Route path="/elections/:id" element={<ElectionDetails />} />
         <Route path="/elections/:id/candidates" element={<Candidate />} />

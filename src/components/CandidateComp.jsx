@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { UiActions } from '../store/ui-Slice';
+import { voteAction } from '../store/vote-slice';
 
 
 const CandidateComp = ({ image, fullname, id, motto }) => {
@@ -8,11 +9,14 @@ const CandidateComp = ({ image, fullname, id, motto }) => {
   const dispatch = useDispatch();
 
   // open confirm vote modal
-  const openCandidateModal = () => {
-    console.log('dispatching action...')
-    dispatch(UiActions.openVoteCandidateModal())
-    console.log('action dispatched')
-  }
+  const openCandidateModal = (id) => {
+    console.log('dispatching action...');
+    dispatch(UiActions.openVoteCandidateModal());
+    console.log('fetching candidate id...');
+    dispatch(voteAction.changeSelectedVoteCandidate(id));
+    console.log("getting candidate id", id);
+  };
+  
 
 
   return (
@@ -30,7 +34,7 @@ const CandidateComp = ({ image, fullname, id, motto }) => {
 
       <button className="vote__btn btn btn-primary" onClick={() => {
         console.log('Button clicked');
-        openCandidateModal();
+        openCandidateModal(id);
       }}>Vote</button>
     </article>
 
