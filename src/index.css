@@ -681,6 +681,9 @@ body.dark  .modal__content form button {
         width: 20rem !important;
     }
 
+    .modal__header{
+        width:323px;
+    }
 
     /*======================== ELECTION RESPONSIVE SCREEN====================*/
 
@@ -833,5 +836,18 @@ body.dark  .modal__content form button {
     .btn__election {
         font-size: 14px;
         padding: 10px 0;
+    }
+
+    /*--------------- ELECTION RESPONSIVE SCREEN ------------------*/
+    .elections__header h1{
+        font-size: 23px !important;
+        border: 2px solid black;
+        margin-left: 19px;
+
+    }
+
+    .elections__header button{
+        font-size: 14px !important;
+        /* width: 100px !important; */
     }
 }
