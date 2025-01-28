@@ -4,6 +4,26 @@ body.dark {
     transition: 0.5s;
 
 }
+body.dark .navbardropdown{
+        /* padding: 10px; */
+        font-size: 16px;
+        text-decoration: none;
+        display: block;
+        transition: 0.3s;
+        border-radius: 5px,
+}
+
+body.dark .dropdownMenu{
+    /* position: absolute;
+    top: 60px;
+    right: 10px; */
+    /* background:  #fff; */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1000,
+} 
 
 body.dark .box__card {
     background-color: rgb(4, 20, 34);
@@ -204,6 +224,7 @@ body {
     font-size: 15px;
     font-weight: 700;
 }
+
 
 .btn__election:hover {
     background-color: rgb(4, 20, 34);
@@ -407,18 +428,19 @@ body.dark  .modal__content form button {
 .modal__content form input {
     width: 100%;
     padding: 0.6rem;
-    border-radius: 8px;
-    /* border: 1px solid #ccc; */
-    /* background-color: #f8f8f8; */
+    /* border-radius: 8px; */
+    /* border: 1px solid #a50303; */    
     font-size: 0.9rem;
     transition: border 0.3s;
+    
 }
+
 
 .modal__content form input:focus {
     border: 1px solid #007bff;
     outline: none;
     background-color: #fff;
-}
+} 
 
 .modal__content form button {
     padding: 0.6rem;
@@ -519,7 +541,7 @@ body.dark  .modal__content form button {
 
 .elections {
     margin: 1rem 0;
-    /* border: 2px solid black;     */
+    /* border: 2px solid black; */
 }
 
 .elections__header h1 {
@@ -553,6 +575,8 @@ body.dark  .modal__content form button {
     border: 0.5rem solid white;
     transition: var(transition);
 }
+
+
 
 
 .election__image {
@@ -712,6 +736,183 @@ body.dark  .modal__content form button {
 
 
 
+/*---------------------------------- ELECTION DETAILS ------------------------------------------*/
+
+.electionDetails {
+    margin:5rem 0;
+
+}
+
+body.dark .electionDetails{
+    color: white;
+}
+
+
+.electionDetails__image{
+    height: 15rem;
+    margin: 1.2rem 0 0.8rem;
+}
+
+
+.electionDetails__candidate{
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap:3rem;
+    border-top: 2px solid black;
+    /* border: 1px solid black; */
+
+}
+
+
+
+.electionDetails__image img{
+    width: 100%;
+    height: 100%;
+    /* object-fit: cover; */
+}
+
+.electionCandidate{
+    background-color: white;
+    border-radius: 20px;    
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    /* width: 400px; */
+    
+}
+
+
+body.dark .electionCandidate{
+    background-color: rgb(15, 15, 15);
+}
+
+.electionCandidate__image{
+    height: 14rem;
+    overflow: hidden;
+    /* border: 2px solid black; */
+    margin-top:-25px ;
+}
+
+.electionCandidate__image img{
+    width: 100%;
+    height: 100%;
+    /* object-fit: cover; */
+}
+
+.electionCandidate__h5{
+    margin: 0.5rem 0 0.3rem;
+}
+
+.electionCandidate > div:nth-child(2){
+    padding: 1.3rem;
+}
+
+
+.electionCandidate__btn{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 1rem;
+    background-color: red;
+    color: white;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    border-radius: 0.6rem;
+    display: flex;
+    border: none;
+    display: none;
+}
+
+body.dark .electionCandidate__btn{
+    color: black;
+}
+
+.electionCandidate__btn:hover{
+    background-color: rgb(34, 34, 34);
+}
+
+.add__candidate-btn{
+    border: 2px solid blue;
+    background-color: white;
+    color: blue;
+    font-size: 5rem;
+    border-radius: 20px;
+    box-shadow: 0 0.8rem 0.8rem rgba(0, 0, 0, 0.2);
+    display: grid;
+    place-items: center;
+    min-height: 14rem;
+}
+
+body.dark .add__candidate-btn{
+    background: transparent;
+    color: white;
+}
+
+body.dark .add__candidate-btn:hover{
+    background-color: rgb(56, 56, 56);
+}
+
+.voters {
+    margin: 6rem 0 3rem;
+    
+}
+
+.voters h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+
+}
+
+.voters__table{
+    width: 100%;
+}
+
+.voters__table thead th{
+    text-align: left;
+    padding: 0.7rem 1.5rem;
+
+}
+
+
+.voters__table tbody td {
+    padding:0.7rem 1.5rem; ;
+}
+
+.voters__table tbody tr:nth-child(odd) {
+    background-color: white;
+}
+
+body.dark .voters__table tbody tr:nth-child(odd) {
+    background-color: rgb(15, 15, 15);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -841,7 +1042,7 @@ body.dark  .modal__content form button {
     /*--------------- ELECTION RESPONSIVE SCREEN ------------------*/
     .elections__header h1{
         font-size: 23px !important;
-        border: 2px solid black;
+        /* border: 2px solid black; */
         margin-left: 19px;
 
     }
@@ -850,4 +1051,101 @@ body.dark  .modal__content form button {
         font-size: 14px !important;
         /* width: 100px !important; */
     }
+
+    .voters__table thead tr{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .voters__table tbody tr{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .electionDetails__candidate{
+        /* border: 2px solid black; */
+        padding-inline: 10px;
+        
+    }
+
+    .voters__table{
+        margin-inline: -15px;
+        /* border: 2px solid black; */
+    }
+
+    .voters h2{
+        margin-left: -23px;
+        /* border: 2px solid black; */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*=======================================  Animated TEXT  =========================================*/
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap'); */
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../src/assets/OnlineVoting.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.home h2 {
+    font-size: 14vh;
+    color: rgb(243, 243, 243);
+    font-family: 'Brush Script MT', cursive;
+    text-transform: uppercase;
+    font-weight: 700;
+    -webkit-text-stroke: 2px solid #000000;
+    display: flex; /* Use flex to space out the words */
+    gap: 20px; /* Space between words */
+}
+
+
+.word {
+    opacity: 0;
+    animation: fadeInOut 5s linear infinite;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(20px); }
+    20% { opacity: 1; transform: translateY(0); } /* Word appears */
+    80% { opacity: 1; transform: translateY(0); } /* Stay visible */
+    100% { opacity: 0; transform: translateY(-20px); } /* Word disappears */
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .home h2 {
+        font-size: 5vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .home h2 {
+        font-size: 3.5vh;
+    }
+    .home{
+        background-size: cover; /* Ensure it still covers the screen */
+        background-position: left center;
+        
+        
+    }
+
 }

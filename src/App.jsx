@@ -1,38 +1,48 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { useSelector } from 'react-redux'; // Import useSelector to access Redux state/
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Navigation from './components/Navigation';
-import Rootlayout from './pages/Rootlayout';
+// import Rootlayout from './pages/Rootlayout';
 import LoginPage from './pages/LoginpPage';
 import { Errorpage } from './pages/Errorpage';
 import Results from './pages/Results';
 import Candidate from './pages/Candidate';
 import ElectionPage from './pages/ElectionPage';
 import { ElectionDetails } from './pages/ElectionDetails';
-import ConfirmVote from './components/ConfirmVote'; // Modal component
+import ConfirmVote from './components/ConfirmVote';
 import Congrats from './pages/Congrats';
+import HomePage from './pages/HomePage';
+import Register from './pages/Resgister';
+import Footer from './pages/Footer';
 
 const App = () => {
-  // Access the modal state from Redux
   const isModalOpen = useSelector((state) => state.ui.voteCandidateModalshowing);
+  const location = useLocation(); // Get the current route
+
+  // Show navbar only if NOT on the homepage
+  const showNavbar = location.pathname !== '/';
+  const ShowFooter = location.pathname !== '/';
 
   return (
     <>
-      <Navigation />
+      {showNavbar && <Navigation />} {/* Navbar only appears after homepage */}
 
       <Routes>
-        <Route path="/" element={<Rootlayout />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<Errorpage />} />
         <Route path="/results" element={<Results />} />
-        <Route path="/congrats" element={<Congrats/>} />
+        <Route path="/congrats" element={<Congrats />} />
+        {/* <Route path="/footer" element={<Footer />} /> */}
         <Route path="/elections" element={<ElectionPage />} />
         <Route path="/elections/:id" element={<ElectionDetails />} />
         <Route path="/elections/:id/candidates" element={<Candidate />} />
       </Routes>
 
-      {/* Conditionally render the ConfirmVote modal */}
       {isModalOpen && <ConfirmVote />}
+
+      {ShowFooter && <Footer />}
     </>
   );
 };
