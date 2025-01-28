@@ -703,6 +703,9 @@ body.dark  .modal__content form button {
 
     .modal__content {
         width: 20rem !important;
+        height: 510px;
+        padding: 0 !important;
+        margin-top: -15px !important; 
     }
 
     .modal__header{
