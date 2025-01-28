@@ -1140,6 +1140,7 @@ body.dark .voters__table tbody tr:nth-child(odd) {
 @media (max-width: 480px) {
     .home h2 {
         font-size: 3.5vh;
+        font-weight: 700;
     }
     .home{
         background-size: cover; /* Ensure it still covers the screen */
