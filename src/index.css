@@ -306,6 +306,10 @@ body {
     margin: 0.5rem 0.5rem;
 }
 
+.vote__btn {
+    margin-bottom: 10px;
+}
+
 .modal {
     backdrop-filter: blur(5px);
     position: fixed;
@@ -391,6 +395,7 @@ body.dark  .modal__content form button {
     width: 350px;
     /* Adjust width to make it smaller */
     padding: 1.5rem;
+    /* border: 2px solid black; */
     border-radius: 12px;
     background: white;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -462,6 +467,7 @@ body.dark  .modal__content form button {
 .confirm__vote-content {
     text-align: center;
     border-radius: 20px;
+    /* border: 2px solid black; */
 
 }
 
@@ -703,9 +709,13 @@ body.dark  .modal__content form button {
 
     .modal__content {
         width: 20rem !important;
-        height: 510px;
-        padding: 0 !important;
-        margin-top: -15px !important; 
+    }
+
+    .confirm__vote-content{
+        /* border: 2px solid black; */
+        height: 520px;
+        padding: 0;
+        margin-top: -50px;
     }
 
     .modal__header{
@@ -1142,10 +1152,9 @@ body.dark .voters__table tbody tr:nth-child(odd) {
 
 @media (max-width: 480px) {
     .home h2 {
-        font-size: 25px;
+        font-size: 3.5vh;
         font-weight: 900;
         font-family: sans-serif;
-
     }
     .home{
         background-size: cover; /* Ensure it still covers the screen */
