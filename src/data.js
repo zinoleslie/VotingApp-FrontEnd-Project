@@ -149,7 +149,7 @@ export const Candidates = [
 
 
 
-const voters = [
+export const Voters = [
     {
         id: "v1",
         fullname: "Alice Johnson",
@@ -194,4 +194,4 @@ const voters = [
 
 
 
-export default { elections, Candidates };
+export default { elections, Candidates, Voters };

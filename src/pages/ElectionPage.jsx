@@ -4,6 +4,7 @@ import Election from "../components/Election"
 import AddElectionModal from "../components/AddElectionModal"
 import { useDispatch, useSelector } from "react-redux"
 import { UiActions } from "../store/ui-Slice"
+import UpdateElectionModal from "../components/UpdateElectionModal"
 
 
 
@@ -15,11 +16,12 @@ const ElectionPage = () => {
 
   //open confirm vote modal
   const openElectioonModal = () => {
-    dispatch(UiActions.openelectionModalShowing())
+    dispatch(UiActions.openelectionModalShowing());
   } 
 
   //check the current state of the modal showing
   const isModalOpen = useSelector(state => state.ui.electionModalshowing)
+  const isUpdateModalOpen = useSelector(state => state.ui.updateElectionModalShowing)
 
 
   return (
@@ -39,6 +41,7 @@ const ElectionPage = () => {
       </section>
 
       {isModalOpen && <AddElectionModal/>}
+      {isUpdateModalOpen && <UpdateElectionModal/>}
     </>
   )
 }

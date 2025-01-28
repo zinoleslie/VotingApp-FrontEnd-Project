@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { IoMdClose } from "react-icons/io";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -6,15 +6,16 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { UiActions } from '../store/ui-Slice';
 
-const AddElectionModal = () => {
+
+const UpdateElectionModal = () => {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [thumbnail, setThumbnail] = useState("")
 
     const dispatch = useDispatch();
 
-    const closeElectionModal = () => {
-        dispatch(UiActions.closeelectionModalShowing());
+    const closeUpdateElectionModal = () => {
+        dispatch(UiActions.closeUpdateElectionModal());
 
     }
 
@@ -26,8 +27,8 @@ const AddElectionModal = () => {
             <div className="modal__content">
                 <header className="modal__header">
 
-                    <h4>Create New Election</h4>
-                    <button className="modal__close" onClick={closeElectionModal}><IoMdClose /></button>
+                    <h4>Edit Election</h4>
+                    <button className="modal__close" onClick={closeUpdateElectionModal}><IoMdClose /></button>
 
                 </header>
                 <Form>
@@ -43,11 +44,11 @@ const AddElectionModal = () => {
 
                     <Form.Group className="mb-3" controlId="formBasicThumnail">
                         <Form.Label>Election Thumbnail</Form.Label>
-                        <Form.Control type="file" name='thumbnail' value={thumbnail} accept='png, jpg, jpeg, avif, webp' onChange={e => setThumbnail(e.target.files[0])} placeholder="enter description" />
+                        <Form.Control type="file" name='thumbnail' accept='png, jpg, jpeg, avif, webp' onChange={e => setThumbnail(e.target.files[0])} placeholder="enter description" />
                     </Form.Group>
 
                     <Button variant="primary" type="submit">
-                        Submit
+                        Update Election
                     </Button>
                 </Form>
             </div>
@@ -55,4 +56,4 @@ const AddElectionModal = () => {
     )
 }
 
-export default AddElectionModal
+export default UpdateElectionModal

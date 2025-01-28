@@ -40,7 +40,8 @@ const uiSlice = createSlice({
             state.updateElectionModalShowing = true
         },
         closeUpdateElectionModal:(state)=>{
-            state.updateElectionModalShowing = false},
+            state.updateElectionModalShowing = false
+        },
 
             
     }
