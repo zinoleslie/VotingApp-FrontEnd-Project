@@ -1156,7 +1156,7 @@ body.dark .voters__table tbody tr:nth-child(odd) {
     width: 11rem;
     position: fixed;
     top: 16px;
-    right: 25px;
+    right: 18px;
 }
 
 .cta__btn {
@@ -1481,5 +1481,23 @@ body.dark .about__container-section h2{
     .about__page{
         margin: 2rem 0;
         /* border: 2px solid black; */
+    }
+
+    .home__cta{
+        display: flex;
+        gap: 10px;
+        /* border: 2px solid black; */
+        width: 11rem;
+        position: fixed;
+        top: 16px;
+        right: 18px;
+    }.home__cta{
+        display: flex;
+        gap: 10px;
+        border: 2px solid black;
+        width: 11rem;
+        position: fixed;
+        top: 16px;
+        right: 0px;
     }
 }
