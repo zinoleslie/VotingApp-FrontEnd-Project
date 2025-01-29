@@ -1241,7 +1241,9 @@ body.dark .about__container-section h2{
 
 .about__container-section h2 {
     text-align: center;
+    font-size: 50px;
     margin-bottom: 50px;
+    font-weight: 700;
 }
 
 .about__container-section {
@@ -1470,4 +1472,14 @@ body.dark .about__container-section h2{
         font-size: 13px;
     }
 
+    .about__container-section h2{
+        font-size: 30px;
+        font-weight: 700;
+        margin-top: 10px;
+    }
+
+    .about__page{
+        margin: 2rem 0;
+        /* border: 2px solid black; */
+    }
 }
