@@ -1494,7 +1494,7 @@ body.dark .about__container-section h2{
     }.home__cta{
         display: flex;
         gap: 10px;
-        border: 2px solid black;
+        /* border: 2px solid black; */
         width: 11rem;
         position: fixed;
         top: 16px;
