@@ -1290,21 +1290,23 @@ body.dark .about__container-section h2{
 .form__container form input{
     background: transparent;
     border:2px solid rgb(155, 158, 177);
+    color: rgb(255, 255, 255);
 }
 
 .form__container form input::placeholder{
-    color: white;
+    color: rgb(212, 212, 212);
 }
 
 
 .form__container form textarea::placeholder{
-    color: white;
+    color: rgb(197, 197, 197);
     font-style: italic;
 }
 
 
 .form__container form textarea:focus {
     background-color: #062a50;
+    color: white;
 }
 
 
@@ -1327,6 +1329,7 @@ body.dark .about__container-section h2{
 
 .form__container form input:focus {
     background-color: #062a50;
+    color: white;
 }
 
 .form__container form h5{
@@ -1457,6 +1460,14 @@ body.dark .about__container-section h2{
         align-items: center;
         margin-left: 10px;
         
+    }
+
+    .cta__btn {
+        color: white;
+        border: none;
+        padding: 9px 16px;
+        font-weight: 500;
+        font-size: 13px;
     }
 
 }
