@@ -63,7 +63,7 @@ function LoginPage() {
               />
             </Form.Group>
 
-            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+            <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
               Don't have an account? <b className="text-primary">Sign up</b>
             </Link>
 

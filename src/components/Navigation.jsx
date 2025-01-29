@@ -48,8 +48,9 @@ function Navigation() {
       cursor: "pointer"
     },
     navbar: {
-      backgroundColor: "rgb(18, 27, 82)",
+      backgroundColor: 'rgb(11, 30, 46)',
       color: '#fff',
+      height: '80px',
     },
     dropdownMenu: {
       position: "absolute",
@@ -58,7 +59,7 @@ function Navigation() {
       background: "white",
       boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
       borderRadius: "10px",
-      padding: "10px",
+      // padding: "10px",
       width: "200px",
       display: showDropdown ? "block" : "none",
       transition: "opacity 0.3s ease-in-out",

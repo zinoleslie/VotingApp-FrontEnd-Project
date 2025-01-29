@@ -20,12 +20,14 @@ const App = () => {
   const location = useLocation(); // Get the current route
 
   // Show navbar only if NOT on the homepage
-  const showNavbar = location.pathname !== '/';
-  const ShowFooter = location.pathname !== '/';
+  const showNavbar = location.pathname !== '/' && location.pathname !== '/register' && location.pathname !== '/login' && location.pathname !== '*'
+  
+  
 
   return (
     <>
       {showNavbar && <Navigation />} {/* Navbar only appears after homepage */}
+      
 
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -42,7 +44,7 @@ const App = () => {
 
       {isModalOpen && <ConfirmVote />}
 
-      {ShowFooter && <Footer />}
+      <Footer />
     </>
   );
 };

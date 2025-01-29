@@ -3,7 +3,7 @@ import { Container, Row, Col, Nav, Navbar } from 'react-bootstrap';
 
 const Footer = () => {
     return (
-        <footer style={{ backgroundColor: '#232839', color: 'white', padding: '20px 0' , marginTop: '200px'}}>
+        <footer style={{ backgroundColor: '#232839', color: 'white', padding: '20px 0' }}>
             <Container>
                 <Row>
                     <Col md={4} className="mb-3">
@@ -14,14 +14,7 @@ const Footer = () => {
                         </p>
                     </Col>
 
-                    <Col md={4} className="mb-3">
-                        <h5>Quick Links</h5>
-                        <Nav className="flex-column">
-                            <Nav.Link href="/login" style={{ color: 'white' }}>Login</Nav.Link>
-                            <Nav.Link href="/elections" style={{ color: 'white' }}>Elections</Nav.Link>
-                            <Nav.Link href="/results" style={{ color: 'white' }}>Results</Nav.Link>
-                        </Nav>
-                    </Col>
+                    
 
                     <Col md={4} className="mb-3">
                         <h5>Contact</h5>
