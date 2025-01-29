@@ -1,28 +1,49 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import AboutUs from '../components/AboutUs';
+import NodeMailer from '../components/NodeMailer';
 
 const HomePage = () => {
-    const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
     const words = ["Welcome", "To", "WebVote..."];
 
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading(false);
-            navigate("/register"); // Navigate after 5s
-        }, 5000);
-    }, [navigate]);
 
     return (
-        <div className="home">
-            <h2>
-                {words.map((word, index) => (
-                    <span key={index} className="word" style={{ animationDelay: `${index * 0.5}s` }}>
-                        {word}
-                    </span>
-                ))}
-            </h2>
-        </div>
+
+        <>
+        <section className="home">
+            <div className='home__cta'>
+                <Link to={'/login'} className='cta__btn btn '>Login</Link>
+                <Link to={'/register'} className='cta__btn btn btn-primary'>Sign Up</Link>
+            </div>
+
+            <div>
+                <h2>
+                    {words.map((word, index) => (
+                        <span key={index} className="word" style={{ animationDelay: `${index * 0.5}s` }}>
+                            {word}
+                        </span>
+                    ))}
+                </h2>
+
+            </div>
+
+            <div className="home__text">
+                <p>Create an election for your school or organization in seconds. Your voters can vote from any location on any device.</p>
+            </div>
+        </section>
+
+        <section className="about__page">
+            <AboutUs/>
+        </section>
+
+        <section className="email__form">
+            <NodeMailer/>
+        </section>
+        </>
+   
+        
+
+
     );
 };
 
