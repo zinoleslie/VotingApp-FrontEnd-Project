@@ -14,6 +14,7 @@ import Congrats from './pages/Congrats';
 import HomePage from './pages/HomePage';
 import Register from './pages/Resgister';
 import Footer from './pages/Footer';
+import ResultElection from './components/ResultElection';
 
 const App = () => {
   const isModalOpen = useSelector((state) => state.ui.voteCandidateModalshowing);
@@ -34,9 +35,9 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<Errorpage />} />
-        <Route path="/results" element={<Results />} />
+        <Route path="/results" element={<ResultElection/>} />
         <Route path="/congrats" element={<Congrats />} />
-        {/* <Route path="/footer" element={<Footer />} /> */}
+        <Route path="/footer" element={<Results />} />
         <Route path="/elections" element={<ElectionPage />} />
         <Route path="/elections/:id" element={<ElectionDetails />} />
         <Route path="/elections/:id/candidates" element={<Candidate />} />

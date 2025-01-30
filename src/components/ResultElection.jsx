@@ -4,7 +4,7 @@ import CandidateRating from './CandidateRating'
 import { Link } from 'react-router-dom'
 
 
-const ResultElection = ({ title, id, thumbnail }) => {
+const ResultElection = ({ title,_id: id, thumbnail }) => {
     const [totalVotes, setTotalVotes] = useState(521)
     const electionCandidate = dummyCandidate.filter(candidate => 
         candidate.electionId === id)

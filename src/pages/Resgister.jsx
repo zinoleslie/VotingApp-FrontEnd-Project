@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Register() {
   const [userData, setUserData] = useState({ Fullname: "", Email: "", Password: "", Password2: "" });
+  const [errorText, setErrorText] = useState("");
+  const navigate = useNavigate();
 
   const styles = {
     formBox: {
@@ -31,13 +34,30 @@ function Register() {
     }));
   };
 
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    try {
+        await axios.post(
+        `http://localhost:5007/api/createVoter`,
+        userData
+      )
+      navigate('/login');
+    } catch (error) {
+      setErrorText(error.response.data.message);
+      setTimeout(() => {
+        setErrorText('');
+      }, 5000);
+    }
+  }
+
   return (
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-12 col-md-8 col-lg-6">
-          <Form style={styles.formBox} className='login__Box'>
+          <Form style={styles.formBox} className='login__Box' onSubmit={handleRegister}>
             <h3 className="fw-bold mb-4 text-center mb-4">Sign Up</h3>
-            <p style={styles.errorMessage}>Any error from the backend</p>
+            { errorText && <p style={styles.errorMessage}>{errorText}</p>}
             <Form.Group className="mb-3" controlId="formBasicFullname">
               <Form.Label className="fw-bold">Fullname</Form.Label>
               <Form.Control
@@ -56,9 +76,9 @@ function Register() {
                 onChange={handleSubmit}
                 placeholder="example@gmail.com"
               />
-              <Form.Text className="text-muted">
+              {/* <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
-              </Form.Text>
+              </Form.Text> */}
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
