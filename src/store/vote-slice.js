@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
- const currentVoter = {id:"v1", token:"naufvkeagfvkaerv", isAdmin: true}
+ const currentVoter = JSON.parse(localStorage.getItem("currentVoter"))
 const initialState = {selectedVoteCandidate:"", currentVoter, selectedElection:"", idOfElectionToUpdate:"",
     addCandidateElectionID:""
 }
@@ -16,6 +16,9 @@ const voteSlice = createSlice({
         },
         changeSelectedElection(state, action){
             state.selectedElection = action.payload;
+        },
+        changeCurrentVoter(state, action){
+            state.currentVoter = action.payload
         },
         changeidOfElectionToUpdate(state, action){
             state.idOfElectionToUpdate = action.payload;

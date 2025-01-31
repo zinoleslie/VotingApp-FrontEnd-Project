@@ -10,7 +10,7 @@ function NodeMailer() {
                 <h5><i>Send Us a Message...</i></h5>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>First Name</Form.Label>
-                <Form.Control type="email" placeholder="name@example.com" />
+                <Form.Control type="text" placeholder="enter your name" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Email address</Form.Label>

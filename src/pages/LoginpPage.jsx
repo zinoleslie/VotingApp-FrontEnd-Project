@@ -1,10 +1,19 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { voteAction } from '../store/vote-slice';
 
 function LoginPage() {
-  const [userData, setUserData] = useState({ Email: "", Password: "" });
+  const [userData, setUserData] = useState({ Email:"", Password:"" });
+  const [errorText, setErrorText] = useState("");
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+
 
   const styles = {
     formBox: {
@@ -25,6 +34,8 @@ function LoginPage() {
     },
   };
 
+
+
   // Function to handle controlled input
   const handleSubmit = (e) => {
     setUserData((prevState) => ({
@@ -33,15 +44,41 @@ function LoginPage() {
     }));
   };
 
-  console.log(userData);
+
+
+
+  //function to handle login
+  const handleLogin = async (e) =>{
+    e.preventDefault(); 
+
+    try {
+      const response = await axios.post(
+        `http://localhost:5007/api/vote/loginVoter`,
+        userData
+      )
+      const newVoter = response.data
+      // save new voter in localStorage and redux store
+      localStorage.setItem("currentVoter", JSON.stringify(newVoter));
+      dispatch(voteAction.changeCurrentVoter(newVoter));
+      console.log("Voter saved in Redux:", newVoter);
+      navigate('/results')
+
+    } catch (error) {
+      setErrorText(error.response.data.message);
+      setTimeout(() =>{
+        setErrorText('');
+      }, 4000);
+    }
+  }
+
 
   return (
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-12 col-md-8 col-lg-6">
-          <Form style={styles.formBox} className='login__Box'>
+          <Form  style={styles.formBox} className='login__Box' onSubmit={handleLogin}>
             <h3 className="fw-bold mb-4 text-center">Sign In</h3>
-            <p style={styles.errorMessage}>Any error from the backend</p>
+            { errorText && <p style={styles.errorMessage}>{errorText}</p>}
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label className="fw-bold">Email</Form.Label>
