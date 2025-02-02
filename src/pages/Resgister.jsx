@@ -3,10 +3,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import SuccessPage from '../components/SuccessPage';
 
 function Register() {
   const [userData, setUserData] = useState({ Fullname: "", Email: "", Password: "", Password2: "" });
   const [errorText, setErrorText] = useState("");
+  const [showSuccessPage, setShowSuccessPage] = useState(false);
   const navigate = useNavigate();
 
   const styles = {
@@ -38,11 +40,14 @@ function Register() {
     e.preventDefault();
 
     try {
-        await axios.post(
+      await axios.post(
         `http://localhost:5007/api/createVoter`,
         userData
       )
-      navigate('/login');
+      setShowSuccessPage(true);
+      setTimeout(() => {
+        navigate('/login'); // Navigate after 5 seconds
+    }, 3000);
     } catch (error) {
       setErrorText(error.response.data.message);
       setTimeout(() => {
@@ -52,71 +57,81 @@ function Register() {
   }
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-12 col-md-8 col-lg-6">
-          <Form style={styles.formBox} className='login__Box' onSubmit={handleRegister}>
-            <h3 className="fw-bold mb-4 text-center mb-4">Sign Up</h3>
-            { errorText && <p style={styles.errorMessage}>{errorText}</p>}
-            <Form.Group className="mb-3" controlId="formBasicFullname">
-              <Form.Label className="fw-bold">Fullname</Form.Label>
-              <Form.Control
-                type="fullname"
-                name="Fullname"
-                onChange={handleSubmit}
-                placeholder="Enter your fullname"
-              />
-            </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label className="fw-bold">Email</Form.Label>
-              <Form.Control
-                type="email"
-                name="Email"
-                onChange={handleSubmit}
-                placeholder="example@gmail.com"
-              />
-              {/* <Form.Text className="text-muted">
+    <>
+
+    {showSuccessPage && <SuccessPage />}
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-12 col-md-8 col-lg-6">
+            <Form style={styles.formBox} className='login__Box' onSubmit={handleRegister}>
+              <h3 className="fw-bold mb-4 text-center mb-4">Sign Up</h3>
+              {errorText && <p style={styles.errorMessage}>{errorText}</p>}
+              <Form.Group className="mb-3" controlId="formBasicFullname">
+                <Form.Label className="fw-bold">Fullname</Form.Label>
+                <Form.Control
+                  type="fullname"
+                  name="Fullname"
+                  onChange={handleSubmit}
+                  placeholder="Enter your fullname"
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label className="fw-bold">Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="Email"
+                  onChange={handleSubmit}
+                  placeholder="example@gmail.com"
+                />
+                {/* <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
               </Form.Text> */}
-            </Form.Group>
+              </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label className="fw-bold">Password</Form.Label>
-              <Form.Control
-                type="password"
-                name="Password"
-                onChange={handleSubmit}
-                placeholder="Enter password"
-              />
-            </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label className="fw-bold">Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="Password"
+                  onChange={handleSubmit}
+                  placeholder="Enter password"
+                />
+              </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword2">
-              <Form.Label className="fw-bold">Confirm Password</Form.Label>
-              <Form.Control
-                type="password"
-                name="Password2"
-                onChange={handleSubmit}
-                placeholder="Confirm your password"
-              />
-            </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword2">
+                <Form.Label className="fw-bold">Confirm Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="Password2"
+                  onChange={handleSubmit}
+                  placeholder="Confirm your password"
+                />
+              </Form.Group>
 
-            <Link to="/login" style={{ textDecoration: "none", color: "black" }}>
-              Already have an account? <b className="text-primary">Sign in</b>
-            </Link>
+              <Link to="/login" style={{ textDecoration: "none", color: "black" }}>
+                Already have an account? <b className="text-primary">Sign in</b>
+              </Link>
 
-            <Button
-              variant="primary"
-              type="submit"
-              className="d-block mx-auto mt-3"
-              style={{ width: "150px" }}
-            >
-              Register
-            </Button>
-          </Form>
+              <Button
+                variant="primary"
+                type="submit"
+                className="d-block mx-auto mt-3"
+                style={{ width: "150px" }}
+              >
+                Register
+              </Button>
+            </Form>
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* <SuccessPage/> */}
+    </>
+
+
+
   );
 }
 

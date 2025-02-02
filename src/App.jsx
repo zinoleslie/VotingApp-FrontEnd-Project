@@ -15,6 +15,10 @@ import HomePage from './pages/HomePage';
 import Register from './pages/Resgister';
 import Footer from './pages/Footer';
 import ResultElection from './components/ResultElection';
+import SuccessPage from './components/SuccessPage';
+import AlreadyVoted from './components/AlreadyVoted';
+import LoginModal from './components/LoginModal';
+// import LogOutPage from './pages/LogOutPage';
 
 const App = () => {
   const isModalOpen = useSelector((state) => state.ui.voteCandidateModalshowing);
@@ -22,22 +26,23 @@ const App = () => {
 
   // Show navbar only if NOT on the homepage
   const showNavbar = location.pathname !== '/' && location.pathname !== '/register' && location.pathname !== '/login' && location.pathname !== '*'
-  
-  
+
+
 
   return (
     <>
       {showNavbar && <Navigation />} {/* Navbar only appears after homepage */}
-      
+
 
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<LoginPage />} />
+        {/* <Route path="/logout" element={<LogOutPage />} /> */}
         <Route path="*" element={<Errorpage />} />
-        <Route path="/results" element={<ResultElection/>} />
+        <Route path="/results" element={<Results />} />
         <Route path="/congrats" element={<Congrats />} />
-        <Route path="/footer" element={<Results />} />
+        <Route path="/success" element={<LoginModal />} />
         <Route path="/elections" element={<ElectionPage />} />
         <Route path="/elections/:id" element={<ElectionDetails />} />
         <Route path="/elections/:id/candidates" element={<Candidate />} />

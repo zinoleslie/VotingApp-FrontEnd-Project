@@ -4,16 +4,17 @@ body.dark {
     transition: 0.5s;
 
 }
-body.dark .navbardropdown{
-        /* padding: 10px; */
-        font-size: 16px;
-        text-decoration: none;
-        display: block;
-        transition: 0.3s;
-        border-radius: 5px,
+
+body.dark .navbardropdown {
+    /* padding: 10px; */
+    font-size: 16px;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+    border-radius: 5px,
 }
 
-body.dark .dropdownMenu{
+body.dark .dropdownMenu {
     /* position: absolute;
     top: 60px;
     right: 10px; */
@@ -23,7 +24,7 @@ body.dark .dropdownMenu{
     padding: 10px;
     transition: opacity 0.3s ease-in-out;
     z-index: 1000,
-} 
+}
 
 body.dark .box__card {
     background-color: rgb(4, 20, 34);
@@ -238,7 +239,8 @@ body {
     align-items: center;
     text-align: center;
     margin-inline: auto;
-    width: 60%;
+    /* border: 2px solid black; */
+    width: 100%;
     /* margin-top: 30px; */
 }
 
@@ -273,6 +275,7 @@ body {
     border-radius: 15px;
     padding-bottom: 1.2rem;
     padding: 8px 7px;
+    /* height: 35rem; */
     /* border: 2px solid black; */
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -292,6 +295,7 @@ body {
     width: 100%;
     /* height: 100%; */
     max-width: 20rem;
+    /* max-height: 50%; */
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -304,6 +308,14 @@ body {
 .candidate small {
     display: block;
     margin: 0.5rem 0.5rem;
+}
+
+.error__img img {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    object-fit: cover;
+    background: transparent;
 }
 
 .vote__btn {
@@ -347,35 +359,35 @@ body {
     margin-bottom: 1rem;
 }
 
-body.dark .modal__header{
+body.dark .modal__header {
     background-color: rgb(4, 20, 34);
 }
 
-body.dark .modal__content  {
+body.dark .modal__content {
     background: rgb(7, 4, 17) !important;
     color: white !important;
 
 }
 
-body.dark  .modal__content form label {
+body.dark .modal__content form label {
     color: white !important;
 }
 
-body.dark  .modal__close{
+body.dark .modal__close {
     color: white !important;
 }
 
-body.dark  .modal__content form input {
+body.dark .modal__content form input {
     background: transparent !important;
-    border:1px solid rgb(97, 78, 78) !important;
+    border: 1px solid rgb(97, 78, 78) !important;
     color: white !important;
 }
 
-body.dark  .modal__content form input::placeholder {
+body.dark .modal__content form input::placeholder {
     color: rgb(202, 202, 202) !important;
 }
 
-body.dark  .modal__content form button {
+body.dark .modal__content form button {
     background-color: rgb(2, 72, 134) !important;
     color: white !important;
 }
@@ -434,10 +446,10 @@ body.dark  .modal__content form button {
     width: 100%;
     padding: 0.6rem;
     /* border-radius: 8px; */
-    /* border: 1px solid #a50303; */    
+    /* border: 1px solid #a50303; */
     font-size: 0.9rem;
     transition: border 0.3s;
-    
+
 }
 
 
@@ -445,7 +457,7 @@ body.dark  .modal__content form button {
     border: 1px solid #007bff;
     outline: none;
     background-color: #fff;
-} 
+}
 
 .modal__content form button {
     padding: 0.6rem;
@@ -462,6 +474,73 @@ body.dark  .modal__content form button {
 .modal__content form button:hover {
     background-color: #0056b3;
 }
+
+
+.modal__confirm {
+    width: 80px;
+    height: 40px;
+}
+
+
+/*======================================================= success indicator ==============================================================*/
+
+.icon-success {
+    font-size: 3.5rem;
+    color: green;
+    animation: popIn 0.5s ease-out;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+.icon-danger {
+    font-size: 3.5rem;
+    color: red;
+    animation: popOut 0.5s ease-out;
+}
+
+@keyframes popOut {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .confirm__vote-content {
@@ -679,7 +758,7 @@ body.dark  .modal__content form button {
 
 }
 
-@media (max-width: 480px) {
+@media (max-width: 490px) {
 
     /* Phones (sm screens) */
     .candidate__header {
@@ -711,15 +790,15 @@ body.dark  .modal__content form button {
         width: 20rem !important;
     }
 
-    .confirm__vote-content{
+    .confirm__vote-content {
         /* border: 2px solid black; */
         height: 520px;
         padding: 0;
         margin-top: -50px;
     }
 
-    .modal__header{
-        width:323px;
+    .modal__header {
+        width: 323px;
     }
 
     /*======================== ELECTION RESPONSIVE SCREEN====================*/
@@ -748,31 +827,45 @@ body.dark  .modal__content form button {
 
 
 
+.loader {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    padding-top: 8rem;
+}
+
+.loader_container {
+    width: 7rem;
+    height: 7rem;
+}
+
+
 
 /*---------------------------------- ELECTION DETAILS ------------------------------------------*/
 
 .electionDetails {
-    margin:5rem 0;
+    margin: 5rem 0;
 
 }
 
-body.dark .electionDetails{
+body.dark .electionDetails {
     color: white;
 }
 
 
-.electionDetails__image{
+.electionDetails__image {
     height: 15rem;
     margin: 1.2rem 0 0.8rem;
 }
 
 
-.electionDetails__candidate{
+.electionDetails__candidate {
     margin-top: 2.5rem;
     padding-top: 2.5rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap:3rem;
+    gap: 3rem;
     border-top: 2px solid black;
     /* border: 1px solid black; */
 
@@ -780,50 +873,50 @@ body.dark .electionDetails{
 
 
 
-.electionDetails__image img{
+.electionDetails__image img {
     width: 100%;
     height: 100%;
     /* object-fit: cover; */
 }
 
-.electionCandidate{
+.electionCandidate {
     background-color: white;
-    border-radius: 20px;    
+    border-radius: 20px;
     overflow: hidden;
     position: relative;
     text-align: center;
     /* width: 400px; */
-    
+
 }
 
 
-body.dark .electionCandidate{
+body.dark .electionCandidate {
     background-color: rgb(15, 15, 15);
 }
 
-.electionCandidate__image{
+.electionCandidate__image {
     height: 14rem;
     overflow: hidden;
     /* border: 2px solid black; */
-    margin-top:-25px ;
+    margin-top: -25px;
 }
 
-.electionCandidate__image img{
+.electionCandidate__image img {
     width: 100%;
     height: 100%;
     /* object-fit: cover; */
 }
 
-.electionCandidate__h5{
+.electionCandidate__h5 {
     margin: 0.5rem 0 0.3rem;
 }
 
-.electionCandidate > div:nth-child(2){
+.electionCandidate>div:nth-child(2) {
     padding: 1.3rem;
 }
 
 
-.electionCandidate__btn{
+.electionCandidate__btn {
     position: absolute;
     right: 0;
     top: 0;
@@ -838,15 +931,15 @@ body.dark .electionCandidate{
     display: none;
 }
 
-body.dark .electionCandidate__btn{
+body.dark .electionCandidate__btn {
     color: black;
 }
 
-.electionCandidate__btn:hover{
+.electionCandidate__btn:hover {
     background-color: rgb(34, 34, 34);
 }
 
-.add__candidate-btn{
+.add__candidate-btn {
     border: 2px solid blue;
     background-color: white;
     color: blue;
@@ -858,18 +951,18 @@ body.dark .electionCandidate__btn{
     min-height: 14rem;
 }
 
-body.dark .add__candidate-btn{
+body.dark .add__candidate-btn {
     background: transparent;
     color: white;
 }
 
-body.dark .add__candidate-btn:hover{
+body.dark .add__candidate-btn:hover {
     background-color: rgb(56, 56, 56);
 }
 
 .voters {
     margin: 6rem 0 3rem;
-    
+
 }
 
 .voters h2 {
@@ -878,11 +971,11 @@ body.dark .add__candidate-btn:hover{
 
 }
 
-.voters__table{
+.voters__table {
     width: 100%;
 }
 
-.voters__table thead th{
+.voters__table thead th {
     text-align: left;
     padding: 0.7rem 1.5rem;
 
@@ -890,7 +983,8 @@ body.dark .add__candidate-btn:hover{
 
 
 .voters__table tbody td {
-    padding:0.7rem 1.5rem; ;
+    padding: 0.7rem 1.5rem;
+    ;
 }
 
 .voters__table tbody tr:nth-child(odd) {
@@ -1053,41 +1147,41 @@ body.dark .voters__table tbody tr:nth-child(odd) {
     }
 
     /*--------------- ELECTION RESPONSIVE SCREEN ------------------*/
-    .elections__header h1{
+    .elections__header h1 {
         font-size: 23px !important;
         /* border: 2px solid black; */
         margin-left: 19px;
 
     }
 
-    .elections__header button{
+    .elections__header button {
         font-size: 14px !important;
         /* width: 100px !important; */
     }
 
-    .voters__table thead tr{
+    .voters__table thead tr {
         display: flex;
         flex-direction: column;
     }
 
-    .voters__table tbody tr{
+    .voters__table tbody tr {
         display: flex;
         flex-direction: column;
         width: 100%;
     }
 
-    .electionDetails__candidate{
+    .electionDetails__candidate {
         /* border: 2px solid black; */
         padding-inline: 10px;
-        
+
     }
 
-    .voters__table{
+    .voters__table {
         margin-inline: -15px;
         /* border: 2px solid black; */
     }
 
-    .voters h2{
+    .voters h2 {
         margin-left: -23px;
         /* border: 2px solid black; */
     }
@@ -1130,8 +1224,10 @@ body.dark .voters__table tbody tr:nth-child(odd) {
     text-transform: uppercase;
     font-weight: 700;
     /* -webkit-text-stroke: 2px  #000000; */
-    display: flex; /* Use flex to space out the words */
-    gap: 20px; /* Space between words */
+    display: flex;
+    /* Use flex to space out the words */
+    gap: 20px;
+    /* Space between words */
 }
 
 
@@ -1141,15 +1237,34 @@ body.dark .voters__table tbody tr:nth-child(odd) {
 }
 
 @keyframes fadeInOut {
-    0% { opacity: 0; transform: translateY(20px); }
-    20% { opacity: 1; transform: translateY(0); } /* Word appears */
-    80% { opacity: 1; transform: translateY(0); } /* Stay visible */
-    100% { opacity: 0; transform: translateY(-20px); } /* Word disappears */
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Word appears */
+    80% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Stay visible */
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    /* Word disappears */
 }
 
 
 
-.home__cta{
+.home__cta {
     display: flex;
     gap: 10px;
     /* border: 2px solid black; */
@@ -1167,13 +1282,13 @@ body.dark .voters__table tbody tr:nth-child(odd) {
     font-size: 16.5px;
 }
 
-.cta__btn:hover{
+.cta__btn:hover {
     color: rgb(57, 204, 253);
 }
 
-.home__text{
+.home__text {
     margin-top: 60px;
-    color:white;
+    color: white;
     font-size: 20px;
     /* font-family: 'Brush Script MT', cursive; */
     text-transform: uppercase;
@@ -1181,14 +1296,14 @@ body.dark .voters__table tbody tr:nth-child(odd) {
     position: fixed;
     left: 100px;
     bottom: 80px;
-    -webkit-text-stroke: 0.3px  black !important;
+    -webkit-text-stroke: 0.3px black !important;
 }
 
-.home__text p{
+.home__text p {
     font-weight: 900;
 }
 
-.about__page{
+.about__page {
     margin: 10rem 0;
     /* border: 2px solid black; */
 }
@@ -1203,7 +1318,7 @@ body.dark .voters__table tbody tr:nth-child(odd) {
 
 }
 
-.icon__image{
+.icon__image {
     font-size: 70px;
     text-align: center;
     margin-bottom: 0.5rem;
@@ -1216,19 +1331,19 @@ body.dark .voters__table tbody tr:nth-child(odd) {
     margin-bottom: 1rem;
 }
 
-body.dark .aboutUs__box h3{
+body.dark .aboutUs__box h3 {
     color: white;
 }
 
-body.dark .aboutUs__box p{
+body.dark .aboutUs__box p {
     color: white;
 }
 
-body.dark .about__container-section h2{
+body.dark .about__container-section h2 {
     color: white;
 }
 
-.aboutUs__box p{
+.aboutUs__box p {
     text-align: center;
 }
 
@@ -1249,6 +1364,7 @@ body.dark .about__container-section h2{
 .about__container-section {
     margin-top: 100px;
 }
+
 .form__container {
     display: flex;
     /* border: 2px solid black; */
@@ -1256,7 +1372,8 @@ body.dark .about__container-section h2{
     margin-top: 50px;
     padding: 5rem 0;
     position: relative;
-    overflow: hidden; /* Ensures pseudo-element doesn't overflow */
+    overflow: hidden;
+    /* Ensures pseudo-element doesn't overflow */
 }
 
 .form__container::before {
@@ -1270,13 +1387,15 @@ body.dark .about__container-section h2{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    filter: blur(3px); /* Apply blur */
-    z-index: -1; /* Send behind content */
-    
+    filter: blur(3px);
+    /* Apply blur */
+    z-index: -1;
+    /* Send behind content */
+
 }
 
 
-.form__container form{
+.form__container form {
     /* border: 2px solid black; */
     width: 30rem;
     height: 30rem;
@@ -1289,18 +1408,18 @@ body.dark .about__container-section h2{
     /* box-shadow: 1px 4px 4px 5px rgb(193, 195, 197); */
 }
 
-.form__container form input{
+.form__container form input {
     background: transparent;
-    border:2px solid rgb(155, 158, 177);
+    border: 2px solid rgb(155, 158, 177);
     color: rgb(255, 255, 255);
 }
 
-.form__container form input::placeholder{
+.form__container form input::placeholder {
     color: rgb(212, 212, 212);
 }
 
 
-.form__container form textarea::placeholder{
+.form__container form textarea::placeholder {
     color: rgb(197, 197, 197);
     font-style: italic;
 }
@@ -1321,10 +1440,10 @@ body.dark .about__container-section h2{
 }
 
 
-.form__container form  textarea{
+.form__container form textarea {
     background-color: transparent;
     color: white;
-    border:2px solid rgb(155, 158, 177);
+    border: 2px solid rgb(155, 158, 177);
 }
 
 
@@ -1334,7 +1453,7 @@ body.dark .about__container-section h2{
     color: white;
 }
 
-.form__container form h5{
+.form__container form h5 {
     color: rgb(165, 207, 255);
     -webkit-text-stroke: 1px black;
     margin-bottom: 20px;
@@ -1345,7 +1464,7 @@ body.dark .about__container-section h2{
 
 }
 
-.node__text h2{
+.node__text h2 {
     font-size: 45px;
     padding: auto;
     color: #fff;
@@ -1362,7 +1481,7 @@ body.dark .about__container-section h2{
     justify-content: center;
     align-items: center;
     margin-left: 10px;
-    
+
 }
 
 
@@ -1395,26 +1514,28 @@ body.dark .about__container-section h2{
         font-weight: 900;
         font-family: sans-serif;
     }
-    .home{
-        background-size: cover; /* Ensure it still covers the screen */
+
+    .home {
+        background-size: cover;
+        /* Ensure it still covers the screen */
         background-position: left center;
         object-fit: cover;
-         background-attachment: scroll;
+        background-attachment: scroll;
     }
 
-    .home::before{
+    .home::before {
         position: fixed;
     }
 
 
-    .home__text{
+    .home__text {
         position: fixed;
         bottom: 100px;
         left: 25px;
         width: 300px;
     }
 
-    .home__text p{
+    .home__text p {
         font-size: 17px;
         -webkit-text-stroke: 0.5px black;
     }
@@ -1428,9 +1549,11 @@ body.dark .about__container-section h2{
         align-items: center;
         padding: 5rem 0;
         position: relative;
-        overflow: hidden; /* Ensures pseudo-element doesn't overflow */
+        overflow: hidden;
+        /* Ensures pseudo-element doesn't overflow */
     }
-    .form__container form{
+
+    .form__container form {
         /* border: 2px solid black; */
         width: 23rem;
         height: 28rem;
@@ -1441,9 +1564,9 @@ body.dark .about__container-section h2{
         overflow: hidden;
         background-color: rgba(0, 0, 0, 0.5);
         /* box-shadow: 1px 4px 4px 5px rgb(193, 195, 197); */
-    } 
+    }
 
-    .node__text h2{
+    .node__text h2 {
         font-size: 20px;
         padding: auto;
         color: #fff;
@@ -1451,8 +1574,8 @@ body.dark .about__container-section h2{
         /* font-family: 'Brush Script MT', cursive; */
         -webkit-text-stroke: 1px rgb(43, 43, 43);
     }
-    
-    
+
+
     .node__text {
         /* border: 2px solid black; */
         width: 20rem;
@@ -1461,7 +1584,7 @@ body.dark .about__container-section h2{
         justify-content: center;
         align-items: center;
         margin-left: 10px;
-        
+
     }
 
     .cta__btn {
@@ -1472,18 +1595,18 @@ body.dark .about__container-section h2{
         font-size: 13px;
     }
 
-    .about__container-section h2{
+    .about__container-section h2 {
         font-size: 30px;
         font-weight: 700;
         margin-top: 10px;
     }
 
-    .about__page{
+    .about__page {
         margin: 2rem 0;
         /* border: 2px solid black; */
     }
 
-    .home__cta{
+    .home__cta {
         display: flex;
         gap: 10px;
         /* border: 2px solid black; */
@@ -1491,7 +1614,9 @@ body.dark .about__container-section h2{
         position: fixed;
         top: 16px;
         right: 18px;
-    }.home__cta{
+    }
+
+    .home__cta {
         display: flex;
         gap: 10px;
         /* border: 2px solid black; */
