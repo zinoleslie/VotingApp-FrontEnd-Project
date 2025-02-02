@@ -16,11 +16,11 @@ const CandidateRating = ({ fullname, image, voteCount, totalVotes }) => {
             <div className="image__info ">
                 <div className="d-flex mb-2">
                     <div className="result__candidate-image ">
-                        <img src={image} style={{ width: "100%", height: "100%" }} alt={fullname} />
+                        <img src={image || 'default image'} style={{ width: "100%", height: "100%" }} alt={fullname} />
                     </div>
                     <div className="result__candidate-info ">
                         <div>
-                            <h5 style={styles.style}>{fullname}</h5>
+                            <h5 style={styles.style}>{fullname || "default text"}</h5>
                             <small>{`${voteCount} ${voteCount === 1 ? "vote" : "votes"}`}</small>
                         </div>
                     </div>

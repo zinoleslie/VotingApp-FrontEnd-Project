@@ -5,10 +5,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { voteAction } from '../store/vote-slice';
+import LoginModal from '../components/LoginModal';
 
 function LoginPage() {
   const [userData, setUserData] = useState({ Email:"", Password:"" });
   const [errorText, setErrorText] = useState("");
+  const [showSuccessPage, setShowSuccessPage] = useState(false);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -61,7 +63,11 @@ function LoginPage() {
       localStorage.setItem("currentVoter", JSON.stringify(newVoter));
       dispatch(voteAction.changeCurrentVoter(newVoter));
       console.log("Voter saved in Redux:", newVoter);
-      navigate('/results')
+
+      setShowSuccessPage(true);
+      setTimeout(() => {
+        navigate('/results'); // Navigate after 3 seconds
+      }, 3000);
 
     } catch (error) {
       setErrorText(error.response.data.message);
@@ -73,49 +79,53 @@ function LoginPage() {
 
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-12 col-md-8 col-lg-6">
-          <Form  style={styles.formBox} className='login__Box' onSubmit={handleLogin}>
-            <h3 className="fw-bold mb-4 text-center">Sign In</h3>
-            { errorText && <p style={styles.errorMessage}>{errorText}</p>}
+    <>
+    {showSuccessPage && <LoginModal/>}
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-12 col-md-8 col-lg-6">
+            <Form style={styles.formBox} className='login__Box' onSubmit={handleLogin}>
+              <h3 className="fw-bold mb-4 text-center">Sign In</h3>
+              {errorText && <p style={styles.errorMessage}>{errorText}</p>}
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label className="fw-bold">Email</Form.Label>
-              <Form.Control
-                type="email"
-                name="Email"
-                onChange={handleSubmit}
-                placeholder="example@gmail.com"
-              />
-            </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label className="fw-bold">Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="Email"
+                  onChange={handleSubmit}
+                  placeholder="example@gmail.com"
+                />
+              </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label className="fw-bold">Password</Form.Label>
-              <Form.Control
-                type="password"
-                name="Password"
-                onChange={handleSubmit}
-                placeholder="Must be 6 characters and above"
-              />
-            </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label className="fw-bold">Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="Password"
+                  onChange={handleSubmit}
+                  placeholder="Must be 6 characters and above"
+                />
+              </Form.Group>
 
-            <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
-              Don't have an account? <b className="text-primary">Sign up</b>
-            </Link>
+              <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
+                Don't have an account? <b className="text-primary">Sign up</b>
+              </Link>
 
-            <Button
-              variant="primary"
-              type="submit"
-              className="d-block mx-auto mt-3"
-              style={{ width: "150px" }}
-            >
-              Sign In
-            </Button>
-          </Form>
+              <Button
+                variant="primary"
+                type="submit"
+                className="d-block mx-auto mt-3"
+                style={{ width: "150px" }}
+              >
+                Sign In
+              </Button>
+            </Form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
+    
   );
 }
 
