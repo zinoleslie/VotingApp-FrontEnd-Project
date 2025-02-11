@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { FaMoon, FaSun, FaBars } from "react-icons/fa6";
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function Navigation() {
@@ -10,6 +11,7 @@ function Navigation() {
 
   // Toggle theme function
   const handleToggle = () => {
+    
     if (localStorage.getItem('voting-app-theme') === 'dark') {
       localStorage.setItem('voting-app-theme', '');
     } else {

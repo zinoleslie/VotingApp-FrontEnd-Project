@@ -12,8 +12,8 @@ function LoginPage() {
   const [userData, setUserData] = useState({ Email: "", Password: "" });
   const [errorText, setErrorText] = useState("");
   const [showSuccessPage, setShowSuccessPage] = useState(false);
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
 
