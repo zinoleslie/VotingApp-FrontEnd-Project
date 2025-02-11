@@ -1,5 +1,5 @@
 body.dark {
-    background-color: rgb(4, 20, 34);
+    background-color: rgb(12, 43, 69);
     /* color: white; */
     transition: 0.5s;
 
@@ -49,7 +49,8 @@ body.dark .candidate__header {
 }
 
 body.dark .candidate {
-    background-color: rgb(225, 225, 247);
+    background-color: rgb(19, 19, 20);
+    color: white;
 }
 
 body.dark .login__Box {
@@ -240,6 +241,7 @@ body {
     text-align: center;
     margin-inline: auto;
     /* border: 2px solid black; */
+    
     width: 100%;
     /* margin-top: 30px; */
 }
@@ -277,6 +279,7 @@ body {
     padding: 8px 7px;
     /* height: 35rem; */
     /* border: 2px solid black; */
+    width:40% ;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
@@ -333,6 +336,7 @@ body {
     background: rgba(0, 0, 0, 0.7);
     display: grid !important;
     place-items: center;
+    visibility: visible;
 }
 
 .modal__content {
@@ -623,6 +627,10 @@ body.dark .modal__content form button {
     font-size: 30px;
 }
 
+body.dark .congrats__container {
+    color: white;
+}
+
 
 .elections {
     margin: 1rem 0;
@@ -659,6 +667,8 @@ body.dark .modal__content form button {
     overflow: hidden;
     border: 0.5rem solid white;
     transition: var(transition);
+    /* border: 1px solid black; */
+    height: 200px;
 }
 
 
@@ -807,6 +817,8 @@ body.dark .modal__content form button {
         grid-template-columns: 1fr;
         max-width: 400px;
         margin: auto;
+        /* border: 2px solid black; */
+        height: auto;
     }
 
     .election__info {
@@ -823,6 +835,10 @@ body.dark .modal__content form button {
         padding: 1rem 0.5rem !important;
         /* border: 2px solid ;  */
     }
+
+    .candidate{
+        width: 100%;
+    }
 }
 
 
@@ -833,9 +849,10 @@ body.dark .modal__content form button {
     width: 100%;
     height: 100%;
     padding-top: 8rem;
+    color: rgb(0, 98, 255); 
 }
 
-.loader_container {
+.loader_container { 
     width: 7rem;
     height: 7rem;
 }
@@ -846,6 +863,8 @@ body.dark .modal__content form button {
 
 .electionDetails {
     margin: 5rem 0;
+    /* border:2px solid black; */
+    /* padding:0 30px; */
 
 }
 
@@ -890,6 +909,12 @@ body.dark .electionDetails {
 }
 
 
+.delete__btn {
+    margin-inline:auto;
+    /* border: 2px solid black; */
+}
+
+
 body.dark .electionCandidate {
     background-color: rgb(15, 15, 15);
 }
@@ -918,7 +943,7 @@ body.dark .electionCandidate {
 
 .electionCandidate__btn {
     position: absolute;
-    right: 0;
+    right: 0; 
     top: 0;
     margin: 1rem;
     background-color: red;
@@ -928,7 +953,7 @@ body.dark .electionCandidate {
     border-radius: 0.6rem;
     display: flex;
     border: none;
-    display: none;
+    
 }
 
 body.dark .electionCandidate__btn {

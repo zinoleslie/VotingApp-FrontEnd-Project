@@ -3,12 +3,25 @@ import { useEffect, useState } from "react"
 import ResultElection from "../components/ResultElection"
 import axios from 'axios'
 import { useSelector } from "react-redux"
+import Loader from "../components/Loader"
+import { useNavigate } from "react-router-dom"
 // import Loader from "../components/Loader"
 
 const Results = () => {
-  const [textElection, settextElection] = useState([])
-
   const token = useSelector(state => state?.vote?.currentVoter?.token)
+  const navigate = useNavigate()
+      useEffect(() => {
+        if (!token) {
+          navigate('/')
+        }
+      },[])
+
+
+
+  const [textElection, settextElection] = useState([])
+  const [isLoading, SetIsLoading] = useState(false);
+
+  
   // console.log(token)
 
   const getElection = async () => {
@@ -17,6 +30,8 @@ const Results = () => {
       console.error("No token found. User might not be logged in.");
       return; // Stop execution if token is missing
     }
+
+    SetIsLoading(true);
 
 
     try {
@@ -37,6 +52,7 @@ const Results = () => {
       console.error("Error fetching elections:", error);
       settextElection([]); // Prevent errors by setting empty array
     }
+    SetIsLoading(false);
   };
 
   // console.log("textElection", response );
@@ -48,8 +64,10 @@ const Results = () => {
   console.log("my text elections", textElection)
 
   return (
+    <>
+    {isLoading && <Loader/>}
     <section className="results">
-      {/* <Loader/> */}
+      
       <div className="result__container ">
         {
           textElection.map(elect => <ResultElection
@@ -60,6 +78,8 @@ const Results = () => {
 
       </div>
     </section>
+    </>
+    
   )
 }
 

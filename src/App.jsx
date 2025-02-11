@@ -18,7 +18,8 @@ import ResultElection from './components/ResultElection';
 import SuccessPage from './components/SuccessPage';
 import AlreadyVoted from './components/AlreadyVoted';
 import LoginModal from './components/LoginModal';
-// import LogOutPage from './pages/LogOutPage';
+import Loader from './components/Loader';
+import LogOutPage from './pages/LogOutPage';
 
 const App = () => {
   const isModalOpen = useSelector((state) => state.ui.voteCandidateModalshowing);
@@ -38,11 +39,11 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<LoginPage />} />
-        {/* <Route path="/logout" element={<LogOutPage />} /> */}
+        <Route path="/logout" element={<LogOutPage />} />
         <Route path="*" element={<Errorpage />} />
         <Route path="/results" element={<Results />} />
         <Route path="/congrats" element={<Congrats />} />
-        <Route path="/success" element={<LoginModal />} />
+        <Route path="/loading" element={<Loader />} />
         <Route path="/elections" element={<ElectionPage />} />
         <Route path="/elections/:id" element={<ElectionDetails />} />
         <Route path="/elections/:id/candidates" element={<Candidate />} />

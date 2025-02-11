@@ -30,9 +30,11 @@ const uiSlice = createSlice({
             state.voteCandidateModalshowing = false},
 
         openelectionModalShowing:(state)=>{
+            console.log("opening modal...")
             state.electionModalshowing= true
         },
         closeelectionModalShowing:(state)=>{
+            console.log("❌ closeelectionModalShowing was called!");
             state.electionModalshowing = false},
 
             

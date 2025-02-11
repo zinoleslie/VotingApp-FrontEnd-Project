@@ -1,8 +1,21 @@
+import { useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 // import "./LoginModal.css"; 
 
 function LoginModal() {
+
+    const navigate = useNavigate()
+    const token = useSelector(state => state?.vote.currentVoter.token)
+    //ACCESS CONTROL
+    useEffect(()=>{
+        if(!token){
+        navigate('/')
+    }},[])
+
+
     const styles = {
         success__modal: {
             display: 'flex',

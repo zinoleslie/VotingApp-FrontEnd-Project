@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 // import {Candidates as dummyCandidates} from '../data'
 import CandidateComp from '../components/CandidateComp';
 import ConfirmVote from '../components/ConfirmVote';
@@ -8,6 +8,17 @@ import axios from 'axios';
 import { voteAction } from '../store/vote-slice';
 
 const Candidate = () => {
+    const navigate = useNavigate()
+    const token = useSelector(state => state?.vote.currentVoter.token)
+    //ACCESS CONTROL
+    useEffect(()=>{
+        if(!token){
+        navigate('/')
+    }},[])
+
+
+
+
     const { id: selectedElection } = useParams();
     const [candidates, setCandidates] = useState([]);
     const [canVote, SetCanVote] = useState(true);
@@ -21,7 +32,7 @@ const Candidate = () => {
     const voteCandidateModalShowing = useSelector(state => state.ui.voteCandidateModalShowing)
     // const candidates = dummyCandidates.filter(candidate => candidate.electionId === id)
 
-    const token = useSelector(state => state?.vote.currentVoter.token)
+    
     const voterID = useSelector(state => state?.vote?.currentVoter?._id)
 
     // console.log("Selected Election ID:", selectedElection);

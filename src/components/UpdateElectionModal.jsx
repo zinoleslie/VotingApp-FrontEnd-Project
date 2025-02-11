@@ -1,28 +1,107 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { IoMdClose } from "react-icons/io";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { UiActions } from '../store/ui-Slice';
+import axios from 'axios';
+import { Spinner } from 'react-bootstrap';
+import SuccessPage from './SuccessPage';
+import { triggerRefresh } from '../store/refreshElelectionSlice';
+import { useNavigate } from 'react-router-dom';
 
 
 const UpdateElectionModal = () => {
-    const [title, setTitle] = useState("")
-    const [description, setDescription] = useState("")
+
+    const navigate = useNavigate()
+    const token = useSelector(state => state?.vote.currentVoter.token)
+    //ACCESS CONTROL
+    useEffect(()=>{
+        if(!token){
+        navigate('/')
+    }},[])
+
+
+
+    const [Title, setTitle] = useState("")
+    const [Description, setDescription] = useState("")
     const [thumbnail, setThumbnail] = useState("")
+    const  [success, setSuccess] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
 
     const dispatch = useDispatch();
+    const idOfElectionToUpdate = useSelector(state => state?.vote?.idOfElectionToUpdate);
+
+
+    console.log('idOfElectionToUpdate', idOfElectionToUpdate)
+
 
     const closeUpdateElectionModal = () => {
         dispatch(UiActions.closeUpdateElectionModal());
+    }
+
+    const refreshPage = () => {
+        dispatch(triggerRefresh());
+    }
+
+
+    const fetchElection = async () => {
+        try {
+            const response = await axios.get(`http://localhost:5007/api/getsingleElection/${idOfElectionToUpdate}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+            const election = await response.data.data;
+            setTitle(election.Title);
+            setDescription(election.Description);
+            setThumbnail(election.thumbnail);
+        } catch (error) {
+            console.log(error)
+        }
 
     }
+
+    useEffect(() => {
+        fetchElection();
+    }, [])
+
+    const updateElection = async (e) => {
+        e.preventDefault();
+        setIsLoading(true)
+        try {
+            const electionData = new FormData();
+            electionData.set('Title', Title);
+            electionData.set('Description', Description);
+            electionData.set('thumbnail', thumbnail);
+            const response = await axios.patch(`http://localhost:5007/api/edit/election/${idOfElectionToUpdate}`, electionData, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+            
+            setIsLoading(false)
+            setSuccess(true)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(()=>{
+        if(success){
+            setTimeout(()=>{
+                setSuccess(false);
+                closeUpdateElectionModal();
+                refreshPage();
+            }, 3000)
+        }
+    }, [success, refreshPage, closeUpdateElectionModal])
 
 
 
 
     return (
+
+        <>
+
+        {success && <SuccessPage message={"Election Updated Successfully"}/>}
+
+
+
         <section className="modal">
             <div className="modal__content">
                 <header className="modal__header">
@@ -31,15 +110,15 @@ const UpdateElectionModal = () => {
                     <button className="modal__close" onClick={closeUpdateElectionModal}><IoMdClose /></button>
 
                 </header>
-                <Form>
+                <Form onSubmit={updateElection}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Election Title:</Form.Label>
-                        <Form.Control type="title" name="title" value={title} onChange={e => setTitle(e.target.value)} placeholder="Enter election title" />
+                        <Form.Control type="title" name="title" value={Title} onChange={e => setTitle(e.target.value)} placeholder="Enter election title" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Election Description</Form.Label>
-                        <Form.Control type="description" value={description} name='description' onChange={e => setDescription(e.target.value)} placeholder="enter description" />
+                        <Form.Control type="description" value={Description} name='description' onChange={e => setDescription(e.target.value)} placeholder="enter description" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicThumnail">
@@ -48,11 +127,13 @@ const UpdateElectionModal = () => {
                     </Form.Group>
 
                     <Button variant="primary" type="submit">
-                        Update Election
+                        {isLoading ? <Spinner animation="border" variant="light"/> :    "Update Election"}
                     </Button>
                 </Form>
             </div>
         </section>
+        </>
+        
     )
 }
 

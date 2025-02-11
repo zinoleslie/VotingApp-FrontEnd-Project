@@ -9,19 +9,29 @@ import { Spinner } from 'react-bootstrap'
 
 
 const ConfirmVote = () => {
+
+     const navigate = useNavigate()
+        const token = useSelector(state => state?.vote.currentVoter.token)
+        //ACCESS CONTROL
+        useEffect(()=>{
+            if(!token){
+            navigate('/')
+        }},[])
+
+
     const [modalCandidate, setModalCandidate] = useState({});
     const [VotedError, setVotedError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+
 
     const closeCandidateModal = () => {
         dispatch(UiActions.closeVoteCandidateModal());
     };
 
     const selectedVoteCandidate = useSelector(state => state?.vote?.selectedVoteCandidate);
-    const token = useSelector(state => state?.vote?.currentVoter?.token);
+    // const token = useSelector(state => state?.vote?.currentVoter?.token);
     const CurrrentVoter = useSelector(state => state?.vote?.currentVoter);
     const selectedElection = useSelector(state => state.vote.selectedElection);
 

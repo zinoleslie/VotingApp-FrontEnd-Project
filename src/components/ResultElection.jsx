@@ -1,21 +1,30 @@
 import React, { useEffect, useState } from 'react'
 // import {Candidates as dummyCandidate} from '../data'
 import CandidateRating from './CandidateRating'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
-import Loader from './Loader'
+// import Loader from './Loader'
 
 
 const ResultElection = ({ Title, _id: id, thumbnail }) => {
+    const navigate = useNavigate()
+    const token = useSelector(state => state?.vote.currentVoter.token)
+    //ACCESS CONTROL
+    useEffect(()=>{
+        if(!token){
+        navigate('/')
+    }},[])
+
+
     const [totalVotes, setTotalVotes] = useState(0)
     const [electCandidate, setElectCandidate] = useState([])
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
 
-    const token = useSelector(state => state?.vote?.currentVoter?.token)
+    
 
     const getCandidates = async () => {
-        setIsLoading(true)
+        // setIsLoading(true)
         try {
             const response = await axios.get(`http://localhost:5007/api/elections/${id}/candidates`, { withCredentials: true, headers: { Authorization: ` Bearer ${token}` } })
             const candidates = await response.data.data
@@ -27,7 +36,7 @@ const ResultElection = ({ Title, _id: id, thumbnail }) => {
         } catch (error) {
             console.log(error)
         } 
-        setIsLoading(false)
+      
     }
 
 
@@ -38,7 +47,6 @@ const ResultElection = ({ Title, _id: id, thumbnail }) => {
     return (
 
         <>
-            {isLoading && <Loader />}
 
 
             <article className=" result" style={{ width: "700px", margin: "0 auto" }} >
