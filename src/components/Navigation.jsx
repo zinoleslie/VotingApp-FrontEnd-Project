@@ -83,7 +83,7 @@ function Navigation() {
     <Navbar expand="lg" style={styles.navbar}>
       <Container>
         {/* Navbar brand */}
-        <Navbar.Brand href="/" style={styles.Pagename}>
+        <Navbar.Brand href="" style={styles.Pagename}>
           <i>WebVote</i>
         </Navbar.Brand>
 

@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { voteAction } from '../store/vote-slice';
 import LoginModal from '../components/LoginModal';
 
 function LoginPage() {
-  const [userData, setUserData] = useState({ Email:"", Password:"" });
+
+  const [userData, setUserData] = useState({ Email: "", Password: "" });
   const [errorText, setErrorText] = useState("");
   const [showSuccessPage, setShowSuccessPage] = useState(false);
   const dispatch = useDispatch();
@@ -20,13 +21,13 @@ function LoginPage() {
   const styles = {
     formBox: {
       border: "none",
-      borderRadius: "10px", 
+      borderRadius: "10px",
       margin: "50px auto",
       padding: "20px 30px",
       backgroundColor: 'rgb(221, 221, 221)',
     },
 
-    
+
     errorMessage: {
       border: 'none',
       padding: '0.6rem 1.5rem',
@@ -50,19 +51,22 @@ function LoginPage() {
 
 
   //function to handle login
-  const handleLogin = async (e) =>{
-    e.preventDefault(); 
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
     try {
       const response = await axios.post(
-        `http://localhost:5007/api/vote/loginVoter`,
+        `http://localhost:5007/api/loginVoter`,
         userData
       )
-      const newVoter = response.data
+      const newVoter = response.data;
+
+
+
       // save new voter in localStorage and redux store
       localStorage.setItem("currentVoter", JSON.stringify(newVoter));
       dispatch(voteAction.changeCurrentVoter(newVoter));
-      console.log("Voter saved in Redux:", newVoter);
+      console.log('the new voter credentials', newVoter);
 
       setShowSuccessPage(true);
       setTimeout(() => {
@@ -71,7 +75,7 @@ function LoginPage() {
 
     } catch (error) {
       setErrorText(error.response.data.message);
-      setTimeout(() =>{
+      setTimeout(() => {
         setErrorText('');
       }, 4000);
     }
@@ -80,7 +84,7 @@ function LoginPage() {
 
   return (
     <>
-    {showSuccessPage && <LoginModal/>}
+      {showSuccessPage && <LoginModal />}
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-md-8 col-lg-6">
@@ -125,7 +129,7 @@ function LoginPage() {
         </div>
       </div>
     </>
-    
+
   );
 }
 

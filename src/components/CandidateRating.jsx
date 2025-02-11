@@ -1,7 +1,19 @@
-import { Link } from "react-router-dom"
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
+import { Link, useNavigate } from "react-router-dom"
 
 
 const CandidateRating = ({ fullname, image, voteCount, totalVotes }) => {
+
+    const navigate = useNavigate()
+    const token = useSelector(state => state?.vote.currentVoter.token)
+    //ACCESS CONTROL
+    useEffect(()=>{
+        if(!token){
+        navigate('/')
+    }},[])
+
+
     const styles = {
         style: {
             fontWeigth: "700",

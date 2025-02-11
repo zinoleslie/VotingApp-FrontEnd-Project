@@ -1,10 +1,20 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { UiActions } from '../store/ui-Slice';
 import { voteAction } from '../store/vote-slice';
+import { useNavigate } from 'react-router-dom';
 
 
 const CandidateComp = ({ image, fullname, _id, motto }) => {
+
+  const navigate = useNavigate()
+  const token = useSelector(state => state?.vote.currentVoter.token)
+  //ACCESS CONTROL
+  useEffect(()=>{
+      if(!token){
+      navigate('/')
+  }},[])
+
       // const [isLoading, SetIsLoading] = useState(false);
 
   const dispatch = useDispatch();
