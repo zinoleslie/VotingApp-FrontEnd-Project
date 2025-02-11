@@ -17,7 +17,7 @@ const Election = ({_id: id, Title, Description, thumbnail}) => {
   const dispatch = useDispatch();
 
   const isAdmin = useSelector(state =>state?.vote?.currentVoter?.data.isAdmin)
-
+  
   const openEditModal = () => {
     dispatch(UiActions.openUpdateElectionModal()); 
     dispatch(voteAction.changeidOfElectionToUpdate(id));
