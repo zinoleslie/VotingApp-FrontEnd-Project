@@ -15,7 +15,8 @@ import HomePage from './pages/HomePage';
 import Register from './pages/Resgister';
 import Footer from './pages/Footer';
 import Loader from './components/Loader';
-import LogOutPage from './pages/LogOutPage';
+import PageLogs from './pages/PageLogs';
+
 
 
 const App = () => {
@@ -36,7 +37,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/logout" element={<LogOutPage/>} />
+        <Route path="/logout" element={<PageLogs/>} />
         <Route path="*" element={<Errorpage />} />
         <Route path="/results" element={<Results />} />
         <Route path="/congrats" element={<Congrats />} />
