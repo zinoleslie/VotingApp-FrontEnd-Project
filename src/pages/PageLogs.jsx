@@ -3,20 +3,22 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { voteAction } from '../store/vote-slice'
 
-const LogOutPage = () => {
+const PageLogs = () => {
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(voteAction.changeCurrentVoter(null))
         localStorage.removeItem('currentVoter')
         navigate('/')
-    },[])
+    }, [])
 
 
-  return (
-    <div><h1>LogOutPage</h1></div>
-  )
+
+    return (
+        <div>PageLogs</div>
+    )
 }
 
-export default LogOutPage
+export default PageLogs
