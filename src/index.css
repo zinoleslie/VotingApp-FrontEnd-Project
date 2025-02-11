@@ -87,6 +87,11 @@ body {
     transition: 0.3s;
 }
 
+.light{
+    background-color: rgb(243, 243, 243);
+    transition: 0.3s;
+}
+
 .results {
     margin: 5rem 0;
 }
