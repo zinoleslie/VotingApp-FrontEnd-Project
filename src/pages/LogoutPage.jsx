@@ -15,7 +15,7 @@ const LogOutPage = () => {
 
 
   return (
-    <div></div>
+    <div><h1>LogOutPage</h1></div>
   )
 }
 
