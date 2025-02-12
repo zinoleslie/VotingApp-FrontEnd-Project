@@ -1249,11 +1249,11 @@ body.dark .voters__table tbody tr:nth-child(odd) {
 
 .home h2 {
     font-size: 14vh;
-    color: rgb(243, 243, 243);
+    color: rgb(33, 31, 31);
     font-family: 'Brush Script MT', cursive;
     text-transform: uppercase;
     font-weight: 700;
-    /* -webkit-text-stroke: 2px  #000000; */
+    -webkit-text-stroke: 0.5px  #ffffff;
     display: flex;
     /* Use flex to space out the words */
     gap: 20px;
@@ -1548,6 +1548,7 @@ body.dark .about__container-section h2 {
     .home {
         background-size: cover;
         /* Ensure it still covers the screen */
+        background-image: url(../src/assets/backgroundVoting.jpg);
         background-position: left center;
         object-fit: cover;
         background-attachment: scroll;

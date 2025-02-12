@@ -32,7 +32,7 @@ export const ElectionDetails = () => {
   const getElections = async () => {
     setIsLoading(true)
     try {
-      const response = await axios.get(`${BackendEndUrl}getsingleElection/${id}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+      const response = await axios.get(`${BackendEndUrl}/getsingleElection/${id}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
       const fetchedElections = await response.data.data;
       setElections(fetchedElections);
       // console.log('setElections....', setElections)
