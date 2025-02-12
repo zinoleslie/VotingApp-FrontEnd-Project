@@ -74,14 +74,14 @@ function LoginPage() {
       setTimeout(() => {
         navigate('/results'); // Navigate after 3 seconds
       }, 3000);
-      setIsLoading(false);
-
+      
     } catch (error) {
       setErrorText(error.response.data.message);
       setTimeout(() => {
         setErrorText('');
       }, 4000);
     }
+    setIsLoading(false);
   }
 
 
