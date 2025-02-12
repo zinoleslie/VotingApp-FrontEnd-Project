@@ -46,10 +46,12 @@ const UpdateElectionModal = () => {
         dispatch(triggerRefresh());
     }
 
+    const BackendEndUrl = import.meta.env.VITE_BACKEND_URL
+
 
     const fetchElection = async () => {
         try {
-            const response = await axios.get(`http://localhost:5007/api/getsingleElection/${idOfElectionToUpdate}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+            const response = await axios.get(`${BackendEndUrl}/getsingleElection/${idOfElectionToUpdate}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
             const election = await response.data.data;
             setTitle(election.Title);
             setDescription(election.Description);
@@ -72,7 +74,7 @@ const UpdateElectionModal = () => {
             electionData.set('Title', Title);
             electionData.set('Description', Description);
             electionData.set('thumbnail', thumbnail);
-            const response = await axios.patch(`http://localhost:5007/api/edit/election/${idOfElectionToUpdate}`, electionData, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+            const response = await axios.patch(`${BackendEndUrl}/edit/election/${idOfElectionToUpdate}`, electionData, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
             
             setIsLoading(false)
             setSuccess(true)

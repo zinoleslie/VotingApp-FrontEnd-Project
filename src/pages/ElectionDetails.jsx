@@ -27,10 +27,12 @@ export const ElectionDetails = () => {
   const token = useSelector(state => state?.vote?.currentVoter?.token);
   const isAdmin = useSelector(state => state?.vote?.currentVoter?.data.isAdmin);
 
+  const BackendEndUrl = import.meta.env.VITE_BACKEND_URL
+
   const getElections = async () => {
     setIsLoading(true)
     try {
-      const response = await axios.get(`http://localhost:5007/api/getsingleElection/${id}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+      const response = await axios.get(`${BackendEndUrl}getsingleElection/${id}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
       const fetchedElections = await response.data.data;
       setElections(fetchedElections);
       // console.log('setElections....', setElections)
@@ -43,7 +45,7 @@ export const ElectionDetails = () => {
 
   const getCandidates = async () => {
     try {
-      const response = await axios.get(`http://localhost:5007/api/elections/${id}/candidates`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+      const response = await axios.get(`${BackendEndUrl}/elections/${id}/candidates`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
       const allCandidate = await response.data.data || [];
       setCandidates(allCandidate)
       console.log('allCandidate', allCandidate)
@@ -56,7 +58,7 @@ export const ElectionDetails = () => {
   const getVoters = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5007/api/election/${id}/voters`,
+        `${BackendEndUrl}/election/${id}/voters`,
         { withCredentials: true, headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -76,7 +78,7 @@ export const ElectionDetails = () => {
   const deleteElection = async () => {
     setIsLoading(true)
     try {
-      const response = await axios.delete(`http://localhost:5007/api/delete/election/${id}`,
+      const response = await axios.delete(`${BackendEndUrl}/delete/election/${id}`,
         {
           withCredentials: true,
           headers: { Authorization: `Bearer ${token}` }

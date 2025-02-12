@@ -20,13 +20,14 @@ const ResultElection = ({ Title, _id: id, thumbnail }) => {
     const [totalVotes, setTotalVotes] = useState(0)
     const [electCandidate, setElectCandidate] = useState([])
     // const [isLoading, setIsLoading] = useState(false);
+    const BackendEndUrl = import.meta.env.VITE_BACKEND_URL
 
     
 
     const getCandidates = async () => {
         // setIsLoading(true)
         try {
-            const response = await axios.get(`http://localhost:5007/api/elections/${id}/candidates`, { withCredentials: true, headers: { Authorization: ` Bearer ${token}` } })
+            const response = await axios.get(`${BackendEndUrl}/elections/${id}/candidates`, { withCredentials: true, headers: { Authorization: ` Bearer ${token}` } })
             const candidates = await response.data.data
             setElectCandidate(candidates)
 
