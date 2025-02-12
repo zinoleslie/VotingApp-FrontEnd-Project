@@ -30,18 +30,16 @@ const Candidate = () => {
     },[selectedElection, dispatch])
 
     const voteCandidateModalShowing = useSelector(state => state.ui.voteCandidateModalShowing)
-    // const candidates = dummyCandidates.filter(candidate => candidate.electionId === id)
 
     
     const voterID = useSelector(state => state?.vote?.currentVoter?._id)
 
-    // console.log("Selected Election ID:", selectedElection);
-
+    const BackendEndUrl = import.meta.env.VITE_BACKEND_URL
 
 
     const getElectCandiates = async () => {
         try {
-            const response = await axios.get(`http://localhost:5007/api/elections/${selectedElection}/candidates`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+            const response = await axios.get(`${BackendEndUrl}/elections/${selectedElection}/candidates`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
             // console.log('the response is' ,response)
             const electCandidates = await response.data.data
 
@@ -54,7 +52,7 @@ const Candidate = () => {
     //get all voters
     const getVoter = async () => {
         try {
-            const response = await axios.get(`http://localhost:5007/api/getVoter/${voterID}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+            const response = await axios.get(`${BackendEndUrl}/getVoter/${voterID}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
             const votedElect= await response.data.data.votedElections;
         if (votedElect === selectedElection) {
             SetCanVote(false)

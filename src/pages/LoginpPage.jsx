@@ -6,12 +6,14 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { voteAction } from '../store/vote-slice';
 import LoginModal from '../components/LoginModal';
+import { Spinner } from 'react-bootstrap';
 
 function LoginPage() {
 
   const [userData, setUserData] = useState({ Email: "", Password: "" });
   const [errorText, setErrorText] = useState("");
   const [showSuccessPage, setShowSuccessPage] = useState(false);
+  const [isloading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -47,16 +49,16 @@ function LoginPage() {
     }));
   };
 
-
-
+  const BackendUrl = import.meta.env.VITE_BACKEND_URL
 
   //function to handle login
   const handleLogin = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
 
     try {
       const response = await axios.post(
-        `http://localhost:5007/api/loginVoter`,
+        `${ BackendUrl }/loginVoter`,
         userData
       )
       const newVoter = response.data;
@@ -72,6 +74,7 @@ function LoginPage() {
       setTimeout(() => {
         navigate('/results'); // Navigate after 3 seconds
       }, 3000);
+      setIsLoading(false);
 
     } catch (error) {
       setErrorText(error.response.data.message);
@@ -122,7 +125,7 @@ function LoginPage() {
                 className="d-block mx-auto mt-3"
                 style={{ width: "150px" }}
               >
-                Sign In
+                { isloading ? <Spinner animation="border" variant="blue"/> : "Sign In"}
               </Button>
             </Form>
           </div>

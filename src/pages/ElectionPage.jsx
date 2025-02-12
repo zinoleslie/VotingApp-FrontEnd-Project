@@ -43,10 +43,12 @@ const ElectionPage = () => {
   const shouldRefreshPage = useSelector(state => state?.refreshElection?.shouldRefreshElection)
   // console.log('isAdmin', isAdmin)
 
+  const BackendEndUrl = import.meta.env.VITE_BACKEND_URL
+
   const handleRender = async () => {
     SetIsLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5007/api/getElections`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+      const response = await axios.get(`${BackendEndUrl}/getElections`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
       setelections(response.data.data);
       SetIsLoading(false);
 

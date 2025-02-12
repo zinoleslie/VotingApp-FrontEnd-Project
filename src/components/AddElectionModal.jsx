@@ -31,6 +31,8 @@ const AddElectionModal = () => {
     const [success, setSuccess] = useState(false)
 
     const dispatch = useDispatch();
+
+    const BackendEndUrl = import.meta.env.VITE_BACKEND_URL
     
 
     const closeElectionModal = () => {
@@ -46,7 +48,7 @@ const AddElectionModal = () => {
             newElection.set('Description', Description);
             newElection.set('thumbnail', thumbnail);
 
-            const response = await axios.post(`http://localhost:5007/api/createElection`, newElection, {withCredentials: true, headers: { Authorization: `Bearer ${token}`}});
+            const response = await axios.post(`${BackendEndUrl}/createElection`, newElection, {withCredentials: true, headers: { Authorization: `Bearer ${token}`}});
             // closeElectionModal();
             setIsLoading(false)
             setSuccess(true)

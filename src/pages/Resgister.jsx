@@ -28,6 +28,8 @@ function Register() {
     }
   };
 
+  const BackendEndUrl = import.meta.env.VITE_BACKEND_URL
+
   // Function to handle controlled input
   const handleSubmit = (e) => {
     setUserData((prevState) => ({
@@ -41,7 +43,7 @@ function Register() {
 
     try {
       await axios.post(
-        `http://localhost:5007/api/createVoter`,
+        `${BackendEndUrl}/createVoter`,
         userData
       )
       setShowSuccessPage(true);

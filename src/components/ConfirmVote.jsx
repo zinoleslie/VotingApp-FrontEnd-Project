@@ -10,13 +10,14 @@ import { Spinner } from 'react-bootstrap'
 
 const ConfirmVote = () => {
 
-     const navigate = useNavigate()
-        const token = useSelector(state => state?.vote.currentVoter.token)
-        //ACCESS CONTROL
-        useEffect(()=>{
-            if(!token){
+    const navigate = useNavigate()
+    const token = useSelector(state => state?.vote.currentVoter.token)
+    //ACCESS CONTROL
+    useEffect(() => {
+        if (!token) {
             navigate('/')
-        }},[])
+        }
+    }, [])
 
 
     const [modalCandidate, setModalCandidate] = useState({});
@@ -35,10 +36,12 @@ const ConfirmVote = () => {
     const CurrrentVoter = useSelector(state => state?.vote?.currentVoter);
     const selectedElection = useSelector(state => state.vote.selectedElection);
 
+    const BackendEndUrl = import.meta.env.VITE_BACKEND_URL
+
     // Fetch candidate details
     const fetchCandidate = async () => {
         try {
-            const response = await axios.get(`http://localhost:5007/api/get/allCandidate/${selectedVoteCandidate}`, {
+            const response = await axios.get(`${BackendEndUrl}/get/allCandidate/${selectedVoteCandidate}`, {
                 withCredentials: true,
                 headers: { Authorization: `Bearer ${token}` }
             });
@@ -52,7 +55,7 @@ const ConfirmVote = () => {
     const confirmVote = async () => {
         setIsLoading(true);
         try {
-            const response = await axios.patch(`http://localhost:5007/api/voteCandidate/${selectedVoteCandidate}`,
+            const response = await axios.patch(`${BackendEndUrl}/voteCandidate/${selectedVoteCandidate}`,
                 { selectedElection },
                 { withCredentials: true, headers: { Authorization: `Bearer ${token}` } }
             );
@@ -98,7 +101,7 @@ const ConfirmVote = () => {
 
                     <div className="confirm__vote-cta">
                         <button className="btn modal__cancel" onClick={closeCandidateModal}>Cancel</button>
-                        <button className="btn btn-primary modal__confirm" onClick={confirmVote}>{isLoading ? <Spinner animation="grow" style={{marginTop:"-2px"}}/> : 'Confirm'}</button>
+                        <button className="btn btn-primary modal__confirm" onClick={confirmVote}>{isLoading ? <Spinner animation="grow" style={{ marginTop: "-2px" }} /> : 'Confirm'}</button>
                     </div>
                 </div>
             </section>

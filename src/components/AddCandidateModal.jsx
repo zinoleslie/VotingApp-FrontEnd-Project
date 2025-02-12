@@ -41,7 +41,7 @@ const AddCandidateModal = () => {
 
     const electionId = useSelector(state => state?.vote?.addCandidateElectionID);
 
-    console.log('electionId', electionId)
+    const BackendEndUrl = import.meta.env.VITE_BACKEND_URL
 
     const addCandidate = async (e) => {
         setIsLoading(true)
@@ -53,7 +53,7 @@ const AddCandidateModal = () => {
             newCandidate.set('image', image);
             newCandidate.set('electionId', electionId);
 
-            await axios.post(`http://localhost:5007/api/add/candidate`, newCandidate, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+            await axios.post(`${BackendEndUrl}/add/candidate`, newCandidate, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
 
             setSuccess(true)
 

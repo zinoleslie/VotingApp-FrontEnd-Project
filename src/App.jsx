@@ -16,6 +16,7 @@ import Register from './pages/Resgister';
 import Footer from './pages/Footer';
 import Loader from './components/Loader';
 import PageLogs from './pages/PageLogs';
+// require('dotenv').config();
 
 
 

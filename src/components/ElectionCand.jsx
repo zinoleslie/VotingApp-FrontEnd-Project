@@ -26,6 +26,7 @@ const ElectionCand = ({ fullname, motto, _id: id, image }) => {
   //getting the isAdmin from the redux store using useSelector
   const isAdmin = useSelector(state => state?.vote?.currentVoter?.data.isAdmin);
 
+  const BackendEndUrl = import.meta.env.VITE_BACKEND_URL
 
   const deleteCandidate = async () => {
     // console.log('Attempting to delete candidate with ID:', id);
@@ -38,7 +39,7 @@ const ElectionCand = ({ fullname, motto, _id: id, image }) => {
 
     try {
       setIsLoading(true)
-      const response = await axios.delete(`http://localhost:5007/api/delete/candidate/${id}`, {
+      const response = await axios.delete(`${BackendEndUrl}/delete/candidate/${id}`, {
         withCredentials: true,
         headers: { Authorization: `Bearer ${token}` }
       });

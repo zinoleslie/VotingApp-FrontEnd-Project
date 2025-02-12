@@ -10,18 +10,21 @@ import { useNavigate } from "react-router-dom"
 const Results = () => {
   const token = useSelector(state => state?.vote?.currentVoter?.token)
   const navigate = useNavigate()
-      useEffect(() => {
-        if (!token) {
-          navigate('/')
-        }
-      },[])
+  useEffect(() => {
+    if (!token) {
+      navigate('/')
+    }
+  }, [])
 
 
 
   const [textElection, settextElection] = useState([])
   const [isLoading, SetIsLoading] = useState(false);
 
-  
+
+  const BackendEndUrl = import.meta.env.VITE_BACKEND_URL
+
+
   // console.log(token)
 
   const getElection = async () => {
@@ -35,12 +38,10 @@ const Results = () => {
 
 
     try {
-      const response = await axios.get(`http://localhost:5007/api/getElections`, {
+      const response = await axios.get(`${BackendEndUrl}/getElections`, {
         withCredentials: true,
         headers: { Authorization: `Bearer ${token}` }
       });
-
-      console.log("my resData", response.data.data)
 
 
       if (Array.isArray(response.data.data)) {
@@ -55,31 +56,29 @@ const Results = () => {
     SetIsLoading(false);
   };
 
-  // console.log("textElection", response );
 
   useEffect(() => {
     getElection();
   }, []);
 
-  console.log("my text elections", textElection)
 
   return (
     <>
-    {isLoading && <Loader/>}
-    <section className="results">
-      
-      <div className="result__container ">
-        {
-          textElection.map(elect => <ResultElection
-            key={elect._id}
-            {...elect}
-          />)
-        }
+      {isLoading && <Loader />}
+      <section className="results">
 
-      </div>
-    </section>
+        <div className="result__container ">
+          {
+            textElection.map(elect => <ResultElection
+              key={elect._id}
+              {...elect}
+            />)
+          }
+
+        </div>
+      </section>
     </>
-    
+
   )
 }
 
