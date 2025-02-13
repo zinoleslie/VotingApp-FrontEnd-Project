@@ -73,7 +73,7 @@ function LoginPage() {
       setShowSuccessPage(true);
       setTimeout(() => {
         navigate('/results'); // Navigate after 3 seconds
-      }, 3000);
+      }, 500);
       
     } catch (error) {
       setErrorText(error.response.data.message);
