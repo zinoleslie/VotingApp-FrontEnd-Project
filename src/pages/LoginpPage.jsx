@@ -50,6 +50,7 @@ function LoginPage() {
   };
 
   const BackendUrl = import.meta.env.VITE_BACKEND_URL
+  console.log('BackendUrl', BackendUrl)
 
   //function to handle login
   const handleLogin = async (e) => {
@@ -73,7 +74,7 @@ function LoginPage() {
       setShowSuccessPage(true);
       setTimeout(() => {
         navigate('/results'); // Navigate after 3 seconds
-      }, 3000);
+      }, 500);
       
     } catch (error) {
       setErrorText(error.response.data.message);
