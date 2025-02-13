@@ -4,6 +4,7 @@ import CandidateRating from './CandidateRating'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
+import { Spinner } from 'react-bootstrap'
 // import Loader from './Loader'
 
 
@@ -11,21 +12,24 @@ const ResultElection = ({ Title, _id: id, thumbnail }) => {
     const navigate = useNavigate()
     const token = useSelector(state => state?.vote.currentVoter.token)
     //ACCESS CONTROL
-    useEffect(()=>{
-        if(!token){
-        navigate('/')
-    }},[])
+    useEffect(() => {
+        if (!token) {
+            navigate('/')
+        }
+    }, [])
 
 
     const [totalVotes, setTotalVotes] = useState(0)
     const [electCandidate, setElectCandidate] = useState([])
-    // const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
+
     const BackendEndUrl = import.meta.env.VITE_BACKEND_URL
 
-    
+
 
     const getCandidates = async () => {
-        // setIsLoading(true)
+        setIsLoading(true)
         try {
             const response = await axios.get(`${BackendEndUrl}/elections/${id}/candidates`, { withCredentials: true, headers: { Authorization: ` Bearer ${token}` } })
             const candidates = await response.data.data
@@ -36,8 +40,8 @@ const ResultElection = ({ Title, _id: id, thumbnail }) => {
             setTotalVotes(votes.reduce((acc, curr) => acc + curr, 0))
         } catch (error) {
             console.log(error)
-        } 
-      
+        }
+        setIsLoading(false)
     }
 
 
@@ -48,8 +52,6 @@ const ResultElection = ({ Title, _id: id, thumbnail }) => {
     return (
 
         <>
-
-
             <article className=" result" style={{ width: "700px", margin: "0 auto" }} >
 
                 <header className=' result__header '>
@@ -65,7 +67,7 @@ const ResultElection = ({ Title, _id: id, thumbnail }) => {
 
 
                     <ul className="result__list  ">
-                        {
+                        { isLoading ? <Spinner animation='grow' variant='secondary'/> :
                             electCandidate.map(candidate => <CandidateRating
                                 key={candidate._id}
                                 {...candidate}
@@ -77,6 +79,7 @@ const ResultElection = ({ Title, _id: id, thumbnail }) => {
                 </header>
 
             </article>
+
         </>
 
     )
