@@ -26,7 +26,7 @@ const Candidate = () => {
 
     useEffect(()=>{
         dispatch(voteAction.changeSelectedElection(selectedElection)); // store in redux
-        console.log('saved to redux store ', selectedElection)
+        
     },[selectedElection, dispatch])
 
     const voteCandidateModalShowing = useSelector(state => state.ui.voteCandidateModalShowing)

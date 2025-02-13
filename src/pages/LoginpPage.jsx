@@ -50,7 +50,6 @@ function LoginPage() {
   };
 
   const BackendUrl = import.meta.env.VITE_BACKEND_URL
-  console.log('BackendUrl', BackendUrl)
 
   //function to handle login
   const handleLogin = async (e) => {
@@ -69,7 +68,6 @@ function LoginPage() {
       // save new voter in localStorage and redux store
       localStorage.setItem("currentVoter", JSON.stringify(newVoter));
       dispatch(voteAction.changeCurrentVoter(newVoter));
-      console.log('the new voter credentials', newVoter);
 
       setShowSuccessPage(true);
       setTimeout(() => {
