@@ -50,6 +50,7 @@ function LoginPage() {
   };
 
   const BackendUrl = import.meta.env.VITE_BACKEND_URL
+  console.log('BackendUrl', BackendUrl)
 
   //function to handle login
   const handleLogin = async (e) => {
