@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link, useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { voteAction } from '../store/vote-slice';
 import LoginModal from '../components/LoginModal';
 import { Spinner } from 'react-bootstrap';
+import DotLoader from '../components/DotLoader';
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
+
 
 function LoginPage() {
 
@@ -14,6 +18,7 @@ function LoginPage() {
   const [errorText, setErrorText] = useState("");
   const [showSuccessPage, setShowSuccessPage] = useState(false);
   const [isloading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -58,7 +63,7 @@ function LoginPage() {
 
     try {
       const response = await axios.post(
-        `${ BackendUrl }/loginVoter`,
+        `${BackendUrl}/loginVoter`,
         userData
       )
       const newVoter = response.data;
@@ -73,7 +78,7 @@ function LoginPage() {
       setTimeout(() => {
         navigate('/results'); // Navigate after 3 seconds
       }, 500);
-      
+
     } catch (error) {
       setErrorText(error.response.data.message);
       setTimeout(() => {
@@ -106,12 +111,16 @@ function LoginPage() {
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label className="fw-bold">Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  name="Password"
-                  onChange={handleSubmit}
-                  placeholder="Must be 6 characters and above"
-                />
+                <div className='d-flex' style={{gap:'10px', alignItems:'center'}}>
+                  <Form.Control
+                    type={showPassword ? "text" : "password"}
+                    name="Password"
+                    onChange={handleSubmit}
+                    placeholder="Must be 6 characters and above"
+                  />
+                  <span onClick={() => setShowPassword(!showPassword)} style={{ cursor: "pointer", backgroundColor: "transparent", border: "none", }}>{showPassword ? <FaEye /> : <FaEyeSlash /> }</span>
+                </div>
+
               </Form.Group>
 
               <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
@@ -124,7 +133,7 @@ function LoginPage() {
                 className="d-block mx-auto mt-3"
                 style={{ width: "150px" }}
               >
-                { isloading ? <Spinner animation="border" variant="blue"/> : "Sign In"}
+                {isloading ? <DotLoader /> : "Sign In"}
               </Button>
             </Form>
           </div>

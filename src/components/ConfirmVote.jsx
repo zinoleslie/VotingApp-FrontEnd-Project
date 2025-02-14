@@ -6,6 +6,7 @@ import { voteAction } from '../store/vote-slice';
 import { useNavigate } from 'react-router-dom';
 import AlreadyVoted from './AlreadyVoted';
 import { Spinner } from 'react-bootstrap'
+import DotLoader from './DotLoader';
 
 
 const ConfirmVote = () => {
@@ -101,7 +102,7 @@ const ConfirmVote = () => {
 
                     <div className="confirm__vote-cta">
                         <button className="btn modal__cancel" onClick={closeCandidateModal}>Cancel</button>
-                        <button className="btn btn-primary modal__confirm" onClick={confirmVote}>{isLoading ? <Spinner animation="grow" style={{ marginTop: "-2px" }} /> : 'Confirm'}</button>
+                        <button className="btn btn-primary modal__confirm" onClick={confirmVote}>{isLoading ? <DotLoader/> : 'Confirm'}</button>
                     </div>
                 </div>
             </section>

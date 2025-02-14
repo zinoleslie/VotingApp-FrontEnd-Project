@@ -5,6 +5,9 @@ body.dark {
 
 }
 
+
+
+
 body.dark .navbardropdown {
     /* padding: 10px; */
     font-size: 16px;
@@ -85,9 +88,24 @@ body.dark .election:hover {
 body {
     background-color: rgb(243, 243, 243);
     transition: 0.3s;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-.light{
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    /* Make sure the page takes full viewport height */
+}
+
+.main-content {
+    flex: 1;
+    /* Pushes the footer down */
+}
+
+.light {
     background-color: rgb(243, 243, 243);
     transition: 0.3s;
 }
@@ -246,7 +264,7 @@ body {
     text-align: center;
     margin-inline: auto;
     /* border: 2px solid black; */
-    
+
     width: 100%;
     /* margin-top: 30px; */
 }
@@ -284,7 +302,7 @@ body {
     padding: 8px 7px;
     /* height: 35rem; */
     /* border: 2px solid black; */
-    width:40% ;
+    width: 40%;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
@@ -618,7 +636,7 @@ body.dark .modal__content form button {
 .congrats {
     padding: 3rem;
     text-align: center;
-    height: 100vh;
+    height: 90vh;
     /* border: 2px solid black; */
 }
 
@@ -841,7 +859,7 @@ body.dark .congrats__container {
         /* border: 2px solid ;  */
     }
 
-    .candidate{
+    .candidate {
         width: 100%;
     }
 }
@@ -854,10 +872,10 @@ body.dark .congrats__container {
     width: 100%;
     height: 100%;
     padding-top: 8rem;
-    color: rgb(0, 98, 255); 
+    color: rgb(0, 98, 255);
 }
 
-.loader_container { 
+.loader_container {
     width: 7rem;
     height: 7rem;
 }
@@ -915,7 +933,7 @@ body.dark .electionDetails {
 
 
 .delete__btn {
-    margin-inline:auto;
+    margin-inline: auto;
     /* border: 2px solid black; */
 }
 
@@ -948,7 +966,7 @@ body.dark .electionCandidate {
 
 .electionCandidate__btn {
     position: absolute;
-    right: 0; 
+    right: 0;
     top: 0;
     margin: 1rem;
     background-color: red;
@@ -958,7 +976,7 @@ body.dark .electionCandidate {
     border-radius: 0.6rem;
     display: flex;
     border: none;
-    
+
 }
 
 body.dark .electionCandidate__btn {
@@ -1248,12 +1266,12 @@ body.dark .voters__table tbody tr:nth-child(odd) {
 }
 
 .home h2 {
-    font-size: 14vh;
-    color: rgb(33, 31, 31);
-    font-family: 'Brush Script MT', cursive;
+    font-size: 12vh;
+    color: rgb(255, 255, 255);
+    /* font-family:cursive; */
     text-transform: uppercase;
     font-weight: 700;
-    -webkit-text-stroke: 0.5px  #ffffff;
+    -webkit-text-stroke: 1.5px #434040;
     display: flex;
     /* Use flex to space out the words */
     gap: 20px;
@@ -1656,4 +1674,71 @@ body.dark .about__container-section h2 {
         top: 16px;
         right: 0px;
     }
+}
+
+
+
+
+
+/*=============================== Dot Animated Loader ==============================*/
+
+.bouncy-balls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 25px;
+}
+
+.bouncy-balls div {
+    width: 8px;
+    height: 8px;
+    background-color: #b2d6ff;
+    /* Change color */
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+.bouncy-balls div:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.bouncy-balls div:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.bouncy-balls div:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+
+@keyframes bounce {
+
+    0%,
+    70% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: gray;
+}
+
+.toggle-password:hover {
+    color: black;
 }

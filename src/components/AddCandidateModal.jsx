@@ -8,8 +8,8 @@ import { UiActions } from '../store/ui-Slice';
 import { useNavigate } from 'react-router-dom';
 // import { current } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { Spinner } from 'react-bootstrap';
 import SuccessPage from './SuccessPage';
+import DotLoader from './DotLoader';
 // import { Candidates as dummyCandidates}  from '../data'
 
 const AddCandidateModal = () => {
@@ -98,7 +98,7 @@ const AddCandidateModal = () => {
                     </Form.Group>
 
                     <Button variant="primary" type="submit">
-                        { isLoading ? <Spinner animation="border"  color = "green"/> : "Submit"}
+                        { isLoading ? <DotLoader animation="border"  color = "green"/> : "Submit"}
                     </Button>
                 </Form>
             </div>
