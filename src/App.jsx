@@ -31,26 +31,33 @@ const App = () => {
 
   return (
     <>
-      {showNavbar && <Navigation />} {/* Navbar only appears after homepage */}
+
+      <div className="app-container">
+        <div className="main-container">
+          {showNavbar && <Navigation />} {/* Navbar only appears after homepage */}
 
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/logout" element={<PageLogs/>} />
-        <Route path="*" element={<Errorpage />} />
-        <Route path="/results" element={<Results />} />
-        <Route path="/congrats" element={<Congrats />} />
-        <Route path="/loading" element={<Loader />} />
-        <Route path="/elections" element={<ElectionPage />} />
-        <Route path="/elections/:id" element={<ElectionDetails />} />
-        <Route path="/elections/:id/candidates" element={<Candidate />} />
-      </Routes>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/logout" element={<PageLogs />} />
+            <Route path="*" element={<Errorpage />} />
+            <Route path="/results" element={<Results />} />
+            <Route path="/congrats" element={<Congrats />} />
+            <Route path="/loading" element={<Loader />} />
+            <Route path="/elections" element={<ElectionPage />} />
+            <Route path="/elections/:id" element={<ElectionDetails />} />
+            <Route path="/elections/:id/candidates" element={<Candidate />} />
+          </Routes>
 
-      {isModalOpen && <ConfirmVote />}
+          {isModalOpen && <ConfirmVote />}
 
-      <Footer />
+          <Footer />
+        </div>
+      </div>
+
+
     </>
   );
 };

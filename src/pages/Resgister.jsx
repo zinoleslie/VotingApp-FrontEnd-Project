@@ -4,12 +4,17 @@ import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import SuccessPage from '../components/SuccessPage';
+import DotLoader from '../components/DotLoader';
+import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 
 function Register() {
   const [userData, setUserData] = useState({ Fullname: "", Email: "", Password: "", Password2: "" });
   const [errorText, setErrorText] = useState("");
   const [showSuccessPage, setShowSuccessPage] = useState(false);
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
 
   const styles = {
     formBox: {
@@ -40,6 +45,7 @@ function Register() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
 
     try {
       await axios.post(
@@ -49,20 +55,21 @@ function Register() {
       setShowSuccessPage(true);
       setTimeout(() => {
         navigate('/login'); // Navigate after 5 seconds
-    }, 3000);
+      }, 3000);
     } catch (error) {
       setErrorText(error.response.data.message);
       setTimeout(() => {
         setErrorText('');
       }, 5000);
     }
+    setIsLoading(false)
   }
 
   return (
 
     <>
 
-    {showSuccessPage && <SuccessPage />}
+      {showSuccessPage && <SuccessPage />}
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-md-8 col-lg-6">
@@ -94,22 +101,31 @@ function Register() {
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label className="fw-bold">Password</Form.Label>
-                <Form.Control
-                  type="password"
+                <div className='d-flex' style={{gap:"10px", alignItems:'center'}}>
+                  <Form.Control
+                  type={showPassword ? 'text' : "password"}
                   name="Password"
                   onChange={handleSubmit}
                   placeholder="Enter password"
                 />
+
+                <span onClick={() => setShowPassword(!showPassword)} style={{ cursor: "pointer", backgroundColor: "transparent", border: "none" }}>{showPassword ? <FaEye /> : <FaEyeSlash />}</span>
+                </div>
+                
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword2">
                 <Form.Label className="fw-bold">Confirm Password</Form.Label>
+                <div className='d-flex' style={{gap:"10px", alignItems:'center'}}>
                 <Form.Control
-                  type="password"
+                  type={showPassword2 ? 'text' :"password"}
                   name="Password2"
                   onChange={handleSubmit}
                   placeholder="Confirm your password"
                 />
+
+                <span onClick={() => setShowPassword2(!showPassword2)} style={{ cursor: "pointer", backgroundColor: "transparent", border: "none"}}>{showPassword2 ? <FaEye /> : <FaEyeSlash />}</span>
+                </div>
               </Form.Group>
 
               <Link to="/login" style={{ textDecoration: "none", color: "black" }}>
@@ -122,7 +138,7 @@ function Register() {
                 className="d-block mx-auto mt-3"
                 style={{ width: "150px" }}
               >
-                Register
+                {isLoading ? <DotLoader /> : "Register"}
               </Button>
             </Form>
           </div>

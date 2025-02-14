@@ -9,6 +9,7 @@ import UpdateElectionModal from "../components/UpdateElectionModal"
 import axios from "axios"
 import { resetRefresh } from "../store/refreshElelectionSlice"
 import {  useNavigate } from "react-router-dom"
+import { Spinner } from "react-bootstrap"
 
 
 
@@ -64,12 +65,13 @@ const ElectionPage = () => {
     }
     handleRender();
   }, [shouldRefreshPage]);
-  console.log('is modal open', isModalOpen)
+  // console.log('is modal open', isModalOpen)
 
 
   return (
     <>
-      {isLoading && <Loader />}
+      
+
       <section className="elections">
         <div className="container elections__container">
           <header className="elections__header">
@@ -78,6 +80,7 @@ const ElectionPage = () => {
           </header>
           <menu className="elections__menu">
             {
+              isLoading ? <Spinner variant="primary" style={{marginInline:'auto'}}/> :
               elections.map(elect => <Election key={elect._id} {...elect} />)
             }
           </menu>

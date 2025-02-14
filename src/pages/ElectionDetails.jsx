@@ -14,6 +14,7 @@ import { voteAction } from '../store/vote-slice';
 
 export const ElectionDetails = () => {
   const [isLoading, setIsLoading] = useState(false)
+  const [isLoadingDelete, setIsLoadingDelete] = useState(false)
   const [elections, setElections] = useState([])
   const [candidates, setCandidates] = useState([])
   const [voters, setVoters] = useState([])
@@ -76,7 +77,7 @@ export const ElectionDetails = () => {
 
 
   const deleteElection = async () => {
-    setIsLoading(true)
+    setIsLoadingDelete(true)
     try {
       const response = await axios.delete(`${BackendEndUrl}/delete/election/${id}`,
         {
@@ -88,7 +89,7 @@ export const ElectionDetails = () => {
     } catch (error) {
       console.log(error)
     }
-    setIsLoading(false) 
+    setIsLoadingDelete(false) 
   }
 
 
@@ -151,7 +152,7 @@ export const ElectionDetails = () => {
             </table>
           </menu>
 
-          <button className="btn btn-danger  delete__btn" style={{ display: 'flex', justifyContent: "center", width: "90%", marginTop: "20px" }} onClick={deleteElection}>{ isLoading ? <Spinner/> : "Delete Election"}</button>
+          <button className="btn btn-danger  delete__btn" style={{ display: 'flex', justifyContent: "center", width: "90%", marginTop: "20px" }} onClick={deleteElection}>{ isLoadingDelete ? <Spinner/> : "Delete Election"}</button>
         </div>
       </section>
 
